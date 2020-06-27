@@ -1,19 +1,30 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Choice from "./pages/Choice";
+import Cooks from "./pages/Cooks";
+import Eater from "./pages/Eater";
+import NoMatch from "./pages/NoMatch";
+
 import "./App.css";
+import Nav from "./components/Nav";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <Nav />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={Choice} />
+            <Route exact path="/cooks" component={Cooks} />
+            <Route exact path="/eater" component={Eater} />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+
+
+      </Router>
+      
     );
   }
 }
