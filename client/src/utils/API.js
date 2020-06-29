@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export default {
-  // Gets all Cooks
+  // Gets all books
   getCooks: function() {
     return axios.get("/api/cooks");
   },
-  // Gets the cook with the given id
-  getOneCook: function(id) {
+  // Gets the book with the given id
+  getCook: function(id) {
     return axios.get("/api/cooks/" + id);
   },
   // Deletes the book with the given id

@@ -1,32 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Detail from "./pages/Detail";
+import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
 import Choice from "./pages/Choice";
 import Cooks from "./pages/Cooks";
 import Eater from "./pages/Eater";
-import NoMatch from "./pages/NoMatch";
 
-import "./App.css";
-import Nav from "./components/Nav";
-
-class App extends Component {
-  render() {
-    return (
-      <Router>
+function App() {
+  return (
+    <Router>
+      <div>
         <Nav />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={Choice} />
-            <Route exact path="/cooks" component={Cooks} />
-            <Route exact path="/eater" component={Eater} />
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-
-
-      </Router>
-      
-    );
-  }
+        <Switch>
+          <Route exact path="/" component={Choice} />
+          <Route exact path="/cooks" component={Cooks} />
+          <Route exact path="/eater" component={Eater} />
+          <Route exact path="/cooks/:id" component={Detail} />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
