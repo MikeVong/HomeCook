@@ -4,12 +4,19 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
-
+import Map from "../components/Map";
 
 class Eater extends Component {
-  state = {
-    cooks: []
+  constructor(props){
+    super(props);
+    this.state = {
+      cooks: [],
+      lat:"",
+      lng:""
+    };
+    
   };
+ 
 
   componentDidMount() {
     this.loadCooks();
@@ -17,9 +24,10 @@ class Eater extends Component {
 
   loadCooks = () => {
     API.getCooks()
-      .then(res =>
-        this.setState({ cooks: res.data})
-      )
+      .then(res =>{
+        console.log(res.data)
+        this.setState({ cooks: res.data, lat: res.data[0].coordinates[0].lat,lng: res.data[0].coordinates[0].lng})
+       })
       .catch(err => console.log(err));
   };
 
@@ -29,29 +37,16 @@ class Eater extends Component {
       .catch(err => console.log(err));
   };
 
-
+  
   render() {
     return (
           <div className="container">
             <Jumbotron>
-              <h1>Cooks On Available</h1>
+            <Map lat={this.state.lat} lng={this.state.lng} />
+            {console.log(this.state.lat)}
+            {console.log(this.state.lng)}
             </Jumbotron>
-            {this.state.cooks.length ? (
-              <List>
-                {this.state.cooks.map(cook => (
-                  <ListItem key={cook._id}>
-                    <Link to={"/cooks/" + cook._id}>
-                      <strong>
-                        {cook.name} at {cook.location}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteCook(cook._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+            
           </div>
     );
   }

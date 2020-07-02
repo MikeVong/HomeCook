@@ -5,7 +5,9 @@ const bookSchema = new Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
   dish: { type: String },
-  ingredients: { type: String, required: true }
+  ingredients: { type: String, required: true },
+  coordinates: { type: Array},
+  address: { type: String}
   /*,
   cost: { type: String, required: true },
   portions: { type: String, required: true },

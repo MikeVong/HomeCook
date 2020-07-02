@@ -4,15 +4,17 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
+
+
 class Detail extends Component {
   state = {
-    cook: {}
+    cook: {},
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
     API.getCook(this.props.match.params.id)
-      .then(res => this.setState({ cook: res.data }))
+      .then(res => this.setState({ cook: res.data},console.log(res.data)))
       .catch(err => console.log(err));
   }
 
@@ -35,6 +37,11 @@ class Detail extends Component {
               <p>
                 {this.state.cook.dish}
               </p>
+                {this.state.cook.address}
+               
+                
+
+ 
               <h1>Ingredients</h1>
               <p>
                 {this.state.cook.ingredients}

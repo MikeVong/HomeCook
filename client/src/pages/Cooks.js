@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Search from "../components/Search";
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+
 
 class Cooks extends Component {
   state = {
@@ -12,7 +15,9 @@ class Cooks extends Component {
     dish:"",
     ingredients:"",
     cost:"",
-    protions:""
+    protions:"",
+    address:"",
+    coordinates:[0,0]
   };
 
   componentDidMount() {
@@ -40,6 +45,15 @@ class Cooks extends Component {
     });
   };
 
+  handleSelect = async value => {
+    
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    this.setState({address: value,
+                    coordinates: latLng});
+
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.name && this.state.location) {
@@ -48,7 +62,8 @@ class Cooks extends Component {
         location: this.state.location,
         dish: this.state.dish,
         ingredients: this.state.ingredients,
-
+        address: this.state.address,
+        coordinates: this.state.coordinates
       })
         .then(res => this.loadCooks())
         .catch(err => console.log(err));
@@ -69,6 +84,13 @@ class Cooks extends Component {
                 name="name"
                 placeholder="name (required)"
               />
+              <Search 
+                value={this.state.address}
+                onChange={this.handleSelect}
+                onSelect={this.handleSelect}
+                name="address"
+                />
+                
               <Input
                 value={this.state.location}
                 onChange={this.handleInputChange}
