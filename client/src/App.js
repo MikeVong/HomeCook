@@ -5,7 +5,8 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Choice from "./pages/Choice";
 import Cooks from "./pages/Cooks";
-import Eater from "./pages/Eater";
+//import Eater from "./pages/Eater";
+import NewMap from "./pages/NewMap";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Choice} />
           <Route exact path="/cooks" component={Cooks} />
-          <Route exact path="/eater" component={Eater} />
+          <Route exact path="/eater" component={NewMap} />
           <Route exact path="/cooks/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>
