@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import GoogleMapReact from "google-map-react";
 import useSwr from "swr";
 import { Link } from "react-router-dom";
-import "./NewMap.css";
+import "./Eater.css";
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
@@ -13,7 +13,7 @@ const Marker = ({children}) => children;
 
 
 
-function NewMap(){
+function Eater(){
     //const langitude = this.props.coords? this.props.coords.langitude: DEFAULT_LANGITUBE;
     //const latitude = this.props.coords? this.props.coords.langitude: DEFAULT_LATITUDE;
     const [DEFAULT_LATITUDE,setLat] = useState(34.5193143);
@@ -43,14 +43,14 @@ function NewMap(){
             );
           }}
         >
-          <img src="/compass.jpg" alt="compass" /> Click here to Show where you are!
+          <img src="/compass.jpg" alt="compass" /> <h4>Click here to Show where you are!</h4>
         </button>
         <GoogleMapReact
         bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAPS_KEY}}
         center= {{lat: DEFAULT_LATITUDE, lng: DEFAULT_LANGITUBE}}
         
         options={options}
-        defaultZoom={10}>
+        defaultZoom={11}>
             {console.log(data)}
             {cookLocation.map(loc =>(
                 <Marker  key={loc._id} lat={loc.coordinates[0].lat} lng={loc.coordinates[0].lng}>
@@ -69,4 +69,4 @@ function NewMap(){
 
 
 
-export default NewMap;
+export default Eater;
