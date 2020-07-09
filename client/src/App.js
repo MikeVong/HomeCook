@@ -7,6 +7,7 @@ import Choice from "./pages/Choice";
 import Cooks from "./pages/Cooks";
 import Eater from "./pages/Eater";
 
+
 function App() {
   return (
     <Router>

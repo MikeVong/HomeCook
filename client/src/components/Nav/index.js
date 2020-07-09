@@ -12,6 +12,7 @@ function Nav() {
       <a className="navbar-brand" href="/eater">
         Eater
       </a>
+     
     </nav>
   );
 }

@@ -32,11 +32,6 @@ class Cooks extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteCook(id)
-      .then(res => this.loadCooks())
-      .catch(err => console.log(err));
-  };
 
   handleInputChange = event => {
     const { name, value } = event.target;

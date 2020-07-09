@@ -33,16 +33,17 @@ class Detail extends Component {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-            <h1>Dish name</h1>
+            <h3>Dish name</h3>
               <p>
                 {this.state.cook.dish}
-              </p>
                 {this.state.cook.address}
+              </p>
+               
                
                 
 
  
-              <h1>Ingredients</h1>
+              <h3>Ingredients</h3>
               <p>
                 {this.state.cook.ingredients}
               </p>
