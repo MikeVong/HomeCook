@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 
@@ -20,42 +18,45 @@ class Detail extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>
-                {this.state.cook.name} by {this.state.cook.location}
-              </h1>
-            </Jumbotron>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-            <h3>Dish name</h3>
-              <p>
-                {this.state.cook.dish}
+    // <div style={{backgroundImage:`url(https://picsum.photos/200)`,  width: "100vw", height: "100vh"}}>
+      <div className="" style={{backgroundImage:`url(/FoodBackground.jpg)`,width: "100vw", height: "100vh"}}>
+          <div className="row"style={{width: "100vw", height: "20vh"}}></div>
+          <div className="row"style={{width: "100vw", height: "60vh"}}>
+            <div className="col-md-2">
+            </div>
+            <div className="col-md-8 seethough">
+              <div className="row back shadow-lg p-3 mb-5 bg-white rounded">
+                <div className="col-md-6">
+                  <img clasName="img-thumbnail rounded"src="/steak.jpg" alt={this.state.cook.name} style={{width:"100%"}}/>
+                  <button className="btn btn-warning mt-5 p-3">
+                  <Link to="/eater">← Back to Eater</Link>
+                  </button>
+                {/* <img src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100"}}/> */}
+                </div>
+                <div className="col-md-6">
+                <h1>Dish Name: {this.state.cook.dish}</h1>
+                <h1>Cook by {this.state.cook.name}</h1>
+                <button className="btn btn-success btn-lg btn-block">
+                  Buy
+                </button>
+                <h4>Address:</h4> 
                 {this.state.cook.address}
-              </p>
-               
-               
-                
+                <h4>Protions Available: {this.state.cook.portions}</h4>
+                <h4>Cost: ${this.state.cook.cost}</h4>
+                <h4>Payment Accepted: {this.state.cook.payBy}</h4>
+                <h4>Ingredients:</h4>
+                <p>{this.state.cook.ingredients}</p>
+                </div>
+              </div>
+              
+            </div>
 
- 
-              <h3>Ingredients</h3>
-              <p>
-                {this.state.cook.ingredients}
-              </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/eater">← Back to Eater</Link>
-          </Col>
-        </Row>
-      </Container>
+            <div className="col-md-2"></div>
+            </div>
+            
+
+            
+    </div>
     );
   }
 }

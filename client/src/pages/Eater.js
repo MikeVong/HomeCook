@@ -38,7 +38,7 @@ function Map(){
 
  return(
    <div>
-     <h1>Eater</h1>
+     <h1 id="info">Eater</h1>
     
   <GoogleMap
     zoom={10}
