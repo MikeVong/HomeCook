@@ -3,11 +3,12 @@ import{GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from "react-g
 import useSwr from "swr";
 import { Link } from "react-router-dom";
 import "./Eater.css"
-
+import mapStyles from "../mapStyles";
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
 const options={
+  styles: mapStyles,
   disableDefaultUI: true,
   
 }
@@ -16,7 +17,7 @@ function Map(){
   const[selectedCook,setSelectedCook] = useState(null);
   const url ="/api/cooks"
   const { data, error } = useSwr(url, fetcher );
-  const cookLocation = data && !error ? data.slice(0,50) : [];
+  const cookLocation = data && !error ? data.slice(0,10) : [];
   
   const [ currentPosition, setCurrentPosition ] = useState({lat: 27.994402, lng: -81.760254});
   
@@ -38,10 +39,40 @@ function Map(){
 
  return(
    <div>
-     <h1 id="info">Eater</h1>
+     <div id="info">
+          {cookLocation.map((card) =>(
+            <div className="card"
+            onMouseOver={() => {
+              
+              const currentPosition = {
+              lat: card.coordinates[0].lat,
+              lng: card.coordinates[0].lng
+              }
+              setCurrentPosition(currentPosition);
+            }}  
+            >
+                <div className="card-body">
+                    <div className="row">
+                      <div className="col-xs-2">
+                      <img clasName="img-thumbnail" src="/steak.jpg" alt={card.name}/>
+                      </div>
+                      <div className="col-xs-2">
+                      <h5>{card.dish} by {card.name}</h5>
+                      <h5>{card.address}</h5>
+                      </div>
+                    </div>
+                   
+                </div>
+          
+            </div>
+          ))}
+      </div>
+     
+
+     
     
   <GoogleMap
-    zoom={10}
+    zoom={12}
     center= {currentPosition}
     options={options}
   >
