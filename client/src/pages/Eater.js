@@ -3,7 +3,7 @@ import{GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from "react-g
 import useSwr from "swr";
 import { Link } from "react-router-dom";
 import "./Eater.css"
-import "@reach/combobox/styles.css";
+
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
