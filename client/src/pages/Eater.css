@@ -46,7 +46,9 @@
     width: 100%;
   }
 
-  h1 {
+
+  
+  #info{
     position: absolute;
     top: 5rem;
     left: 5rem;
@@ -55,4 +57,12 @@
     margin: 0;
     padding: 0;
   }
-  
+
+  .seethough{
+    background: none;
+    color: white;
+  }
+
+  .seethough .back{
+    background: rgba(240, 141, 128, 0.623)!important;
+  }

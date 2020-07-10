@@ -3,15 +3,15 @@ const Schema = mongoose.Schema;
 
 const cookSchema = new Schema({
   name: { type: String, required: true },
-  location: { type: String, required: true },
+  address: { type: String, required: true},
   dish: { type: String },
-  ingredients: { type: String, required: true },
-  coordinates: { type: Array},
-  address: { type: String},
-  cost: { type: String },
-  portions: { type: String },
+  src: {type: String},
+  ingredients: { type: String },
+  portions: { type: Number },
+  cost: { type: Number },
   email: { type: String },
-  src: {type: String}
+  payBy: {type: String},
+  coordinates: { type: Array}
   
 });
 
