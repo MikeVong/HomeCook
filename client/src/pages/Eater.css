@@ -75,3 +75,27 @@
   .card{
     background:  rgba(236, 233, 231, 0.726)!important;
   }
+
+  /* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+label {
+  cursor: pointer;
+  filter: grayscale(50%);
+}
+
+label:hover {
+  filter: grayscale(0);
+}
+input[type="radio"]:checked + label {
+  filter: grayscale(0);
+}
+
+#pix{
+  width: 200px;
+}

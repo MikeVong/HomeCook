@@ -5,6 +5,7 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import Search from "../components/Search";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
+const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
 
 class Cooks extends Component {
   state = {
@@ -51,6 +52,12 @@ class Cooks extends Component {
 
   };
 
+  handleRadioChange = (event) => {
+    this.setState({
+      src: event.currentTarget.value
+    })
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.name && this.state.address) {
@@ -66,7 +73,6 @@ class Cooks extends Component {
         payBy: this.state.payBy,
         coordinates: this.state.coordinates
       })
-        .then(res => this.loadCooks())
         .then(alert("Cook info saved!"))
         .catch(err => console.log(err));
     }
@@ -99,12 +105,60 @@ class Cooks extends Component {
                 name="dish"
                 placeholder="dish name"
               />
-              <Input
-                value={this.state.src}
-                onChange={this.handleInputChange}
-                name="src"
-                placeholder="Food picture link"
-              />
+
+              <fieldset>
+                <legend>
+                  You picked {this.state.src} as your image.
+                </legend>
+                    {foodImage.map((choice,index)=>
+                      <label>
+                        <Input type="radio"
+                        name="src"
+                        key={index}
+                        value={choice}
+                        checked={this.state.src === {choice}}
+                        onChange={this.handleRadioChange.bind(this)}
+                        />
+                        <img id="pix"src={choice} alt={choice}/>
+                    </label>
+                    )}
+                    {/* <label>
+                        <Input type="radio"
+                        name="src"
+                        value="/chicken.jpg"
+                        checked={this.state.src === "/chicken.jpg"}
+                        onChange={this.handleRadioChange.bind(this)}
+                        />
+                        <img id="pix"src="/chicken.jpg" alt="chicken"/>
+                    </label> */}
+                    {/* <label>
+                        <Input type="radio"
+                        name="src"
+                        value="/dessert.jpg"
+                        checked={this.state.src === "/dessert.jpg"}
+                        onChange={this.handleRadioChange.bind(this)}
+                        />
+                        <img id="pix"src="/dessert.jpg" alt="dessert"/>
+                    </label>
+                    <label>
+                        <Input type="radio"
+                        name="src"
+                        value="/steak.jpg"
+                        checked={this.state.src === "/steak.jpg"}
+                        onChange={this.handleRadioChange.bind(this)}
+                        />
+                        <img id="pix"src="/steak.jpg" alt="steak"/>
+                    </label>
+                    <label>
+                        <Input type="radio"
+                        name="src"
+                        value="/Pork.jpg"
+                        checked={this.state.src === "/Pork.jpg"}
+                        onChange={this.handleRadioChange.bind(this)}
+                        />
+                        <img id="pix"src="/Pork.jpg" alt="Pork"/>
+                    </label> */}
+              </fieldset>
               <TextArea
                 value={this.state.ingredients}
                 onChange={this.handleInputChange}
@@ -142,6 +196,8 @@ class Cooks extends Component {
               >
                 Submit Cook
               </FormBtn>
+
+              
             </form>
           </div>
 
