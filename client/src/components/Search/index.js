@@ -18,14 +18,14 @@ export default function Search(props) {
             <div>
               {loading ? <div>...loading</div> : null}
 
-              {suggestions.map(suggestion => {
+              {suggestions.map((suggestion) => { 
                 const style = {
                   backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
                 };
-
+                
                 return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
-                    {suggestion.description}
+                  <div key={suggestion.id} {...getSuggestionItemProps(suggestion, { style })}>
+                    {suggestion.description} 
                   </div>
                 );
               })}

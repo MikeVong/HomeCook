@@ -19,8 +19,8 @@
 
   .locate {
     position: absolute;
-    top: 5rem;
-    left: 2rem;
+    top: 6rem;
+    left: 15rem;
     background: none;
     border: none;
     z-index: 10;
@@ -28,4 +28,50 @@
   .locate img {
     width: 50px;
     cursor: pointer;
+  }
+
+  .search {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 10;
+  }
+  
+  .search input {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+
+  
+  #info{
+    position: absolute;
+    top: 5rem;
+    left: 1rem;
+    color: #281414;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+  }
+
+  .seethough{
+    background: none;
+    color: white;
+  }
+
+  .seethough .back{
+    background: rgba(240, 141, 128, 0.623)!important;
+  }
+
+  .card-body img{
+    width: 50px;
+    height: 50px;
+  }
+
+  .card{
+    background:  rgba(236, 233, 231, 0.726)!important;
   }

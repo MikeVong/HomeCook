@@ -11,14 +11,16 @@ class Cooks extends Component {
   state = {
     cooks: [],
     name: "",
-    location: "",
-    email: "",
-    dish:"",
-    ingredients:"",
-    cost:"",
-    protions:"",
     address:"",
+    dish:"",
+    src:"",
+    ingredients:"",
+    portions:"",
+    cost:"",
+    email: "",
+    payBy: "",
     coordinates:[0,0]
+    
   };
 
   componentDidMount() {
@@ -53,16 +55,21 @@ class Cooks extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name && this.state.location) {
+    if (this.state.name && this.state.address) {
       API.saveCook({
         name: this.state.name,
-        location: this.state.location,
-        dish: this.state.dish,
-        ingredients: this.state.ingredients,
         address: this.state.address,
+        dish: this.state.dish,
+        src: this.state.src,
+        ingredients: this.state.ingredients,
+        portions: this.state.portions,
+        cost: this.state.cost,
+        email: this.state.email,
+        payBy: this.state.payBy,
         coordinates: this.state.coordinates
       })
         .then(res => this.loadCooks())
+        .then(alert("Cook info saved!"))
         .catch(err => console.log(err));
     }
   };
@@ -92,16 +99,16 @@ class Cooks extends Component {
                 />
                 
               <Input
-                value={this.state.location}
-                onChange={this.handleInputChange}
-                name="location"
-                placeholder="location (required)"
-              />
-              <Input
                 value={this.state.dish}
                 onChange={this.handleInputChange}
                 name="dish"
-                placeholder="dish name(required)"
+                placeholder="dish name"
+              />
+              <Input
+                value={this.state.src}
+                onChange={this.handleInputChange}
+                name="src"
+                placeholder="Food picture link"
               />
               <TextArea
                 value={this.state.ingredients}
@@ -109,8 +116,33 @@ class Cooks extends Component {
                 name="ingredients"
                 placeholder="ingredients (Optional)"
               />
+              <Input
+                value={this.state.portions}
+                onChange={this.handleInputChange}
+                name="portions"
+                placeholder="How many Portions?"
+              />
+              <Input
+                value={this.state.cost}
+                onChange={this.handleInputChange}
+                name="cost"
+                placeholder="Price?"
+              />
+              <Input
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                name="email"
+                placeholder="email@email.com"
+                type="email"
+              />
+              <Input
+                value={this.state.payBy}
+                onChange={this.handleInputChange}
+                name="payBy"
+                placeholder="payment type"
+              />
               <FormBtn
-                disabled={!(this.state.location && this.state.name)}
+                disabled={!(this.state.address && this.state.name)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Cook
