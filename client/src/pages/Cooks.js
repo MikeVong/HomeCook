@@ -76,6 +76,7 @@ class Cooks extends Component {
         .then(alert("Cook info saved!"))
         .catch(err => console.log(err));
     }
+    this.props.history.push('/');
   };
 
   render() {
