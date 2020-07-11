@@ -1,4 +1,5 @@
 import React from "react";
+import './nav.css';
 
 function Nav() {
   return (
@@ -10,7 +11,7 @@ function Nav() {
         Cooks
       </a>
       <a className="navbar-brand" href="/eater">
-        Eater
+        Consumers
       </a>
      
     </nav>
