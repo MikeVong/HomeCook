@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import{GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from "react-google-maps";
 import useSwr from "swr";
 import { Link } from "react-router-dom";
-import "./Eater.css"
+import "../App.css";
 import mapStyles from "../mapStyles";
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());

@@ -1,21 +1,21 @@
 import React from "react";
-import './Eater.css';
-import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
+import "../App.css";
 
 
 function Choice() {
     return (
-        <div>
-
-        <div className="jumbotron text-center"style={{backgroundImage:`url(/foodbkground.png)`}}>
-        
+       
+        <div className="jumbotron text-center">
             <br></br>
-            <a id="cooks" className="m-3 display-4" href="/cooks">Cooks</a>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <a id="cooks" className="m-3 display-4" href="/cooks">Cook</a>
             <a id="consumers" className="m-3 display-4" href="/eater">Consumers</a>
         
         </div>
-</div>
-      
+
     );
 }
 

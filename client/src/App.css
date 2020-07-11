@@ -113,11 +113,12 @@ a:hover {
 }
 
 .jumbotron{
-  background: no-repeat center center; 
+  background-image: url(/foodbkground.png);
   -webkit-background-size: 100% 100%; 
   -moz-background-size: 100% 100%; 
   -o-background-size: 100% 100%; 
-  background-size: 100% 100%;
+  background-size: cover;
+  height: 400px;
 }
 /* .overlay {
   background: url(../images/cooking.png);
