@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
+// import Jumbo from "../components/Jumbotron";
+import jumbotron_header from '../components/Jumbotron';
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Search from "../components/Search";
@@ -32,11 +33,7 @@ class Cooks extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteCook(id)
-      .then(res => this.loadCooks())
-      .catch(err => console.log(err));
-  };
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -74,9 +71,12 @@ class Cooks extends Component {
     return (
       <div className="container">
         
-            <Jumbotron>
+            <jumbotron_header>
               <h1>Please tell us what you can make?</h1>
-            </Jumbotron>
+            </jumbotron_header>
+            {/* <Jumbo>
+              <h1>Please tell us what you can make?</h1>
+            </Jumbo> */}
             <form>
               <Input
                 value={this.state.name}

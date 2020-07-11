@@ -1,0 +1,9 @@
+.jumbotron {
+    background: url(../../images/foodbkground.png)no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: cover;
+    height: 400px;
+    border-radius: 0px;
+}

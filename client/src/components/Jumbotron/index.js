@@ -1,14 +1,28 @@
-import React from "react";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Jumbotron, Container } from "react-bootstrap";
+import './index.css';
 
-function Jumbotron({ children }) {
+function jumbotron_header() {
   return (
-    <div
-      style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
-      className="jumbotron"
-    >
-      {children}
-    </div>
-  );
-}
+    <Jumbotron fluid>
+      <Container>
 
-export default Jumbotron;
+      </Container>
+    </Jumbotron>
+  )
+}
+// function Jumbo({ children }) {
+//   return (
+//     <div
+//       style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
+
+//     >
+//       {children}
+//     </div>
+//   );
+// }
+
+// export default Jumbo;
+
+export default jumbotron_header;
