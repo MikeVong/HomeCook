@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import Jumbo from "../components/Jumbotron";
-import jumbotron_header from '../components/Jumbotron';
+import {Jumbotron} from "react-bootstrap";
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Search from "../components/Search";
@@ -84,9 +83,9 @@ class Cooks extends Component {
     return (
       <div className="container">
         
-            <jumbotron_header>
+            <Jumbotron>
               <h1>Please tell us what you can make?</h1>
-            </jumbotron_header>
+            </Jumbotron>
             {/* <Jumbo>
               <h1>Please tell us what you can make?</h1>
             </Jumbo> */}

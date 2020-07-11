@@ -99,3 +99,26 @@ input[type="radio"]:checked + label {
 #pix{
   width: 200px;
 }
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.cookInfo {
+  text-align: center;
+}
+
+
+/* .overlay {
+  background: url(../images/cooking.png);
+  display: none;
+} */
+
+/* #cooks:hover .overlay {
+  color: rgba(255, 255, 255, 0.2); */
+  /* display: block; */
+/* } */
