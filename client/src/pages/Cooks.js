@@ -18,7 +18,7 @@ class Cooks extends Component {
     cost:"",
     email: "",
     payBy: "",
-    coordinates:[0,0]
+    coordinates:[0,0],
     
   };
 
@@ -73,9 +73,11 @@ class Cooks extends Component {
         payBy: this.state.payBy,
         coordinates: this.state.coordinates
       })
+      //change to modal
         .then(alert("Cook info saved!"))
         .catch(err => console.log(err));
     }
+    this.props.history.push('/');
   };
 
   render() {
@@ -202,9 +204,13 @@ class Cooks extends Component {
 
               
             </form>
+
           </div>
+        
+        
 
     );
+
   }
 }
 
