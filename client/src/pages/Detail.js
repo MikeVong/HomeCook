@@ -7,6 +7,7 @@ import API from "../utils/API";
 class Detail extends Component {
   state = {
     cook: {},
+    count: 0
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
@@ -15,6 +16,15 @@ class Detail extends Component {
       .then(res => this.setState({ cook: res.data},console.log(res.data)))
       .catch(err => console.log(err));
   }
+
+  incrementCount =() => {
+      this.setState({count: this.state.count + 1});
+  }
+  decrementCount= () => {
+      this.setState({count: this.state.count - 1});
+  }
+
+
 
   render() {
     return (
@@ -27,7 +37,7 @@ class Detail extends Component {
             <div className="col-md-8 seethough">
               <div className="row back shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="col-md-6">
-                  <img clasName="img-thumbnail rounded"src="/steak.jpg" alt={this.state.cook.name} style={{width:"100%"}}/>
+                  <img className="img-thumbnail rounded"src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100%"}}/>
                   <button className="btn btn-warning mt-5 p-3">
                   <Link to="/eater">← Back to Eater</Link>
                   </button>
@@ -36,12 +46,16 @@ class Detail extends Component {
                 <div className="col-md-6">
                 <h1>Dish Name: {this.state.cook.dish}</h1>
                 <h1>Cook by {this.state.cook.name}</h1>
-                <button className="btn btn-success btn-lg btn-block">
+               <h3>Portions: <button type="button" onClick={this.decrementCount} className="btn btn-info m-3">-</button>
+               <span>{this.state.count}</span>
+               <span><button type="button" onClick={this.incrementCount} className="btn btn-info m-3">+</button></span>
+                <button className="btn btn-success btn-lg ">
                   Buy
-                </button>
+                </button></h3>
                 <h4>Address:</h4> 
                 {this.state.cook.address}
                 <h4>Protions Available: {this.state.cook.portions}</h4>
+                
                 <h4>Cost: ${this.state.cook.cost}</h4>
                 <h4>Payment Accepted: {this.state.cook.payBy}</h4>
                 <h4>Ingredients:</h4>

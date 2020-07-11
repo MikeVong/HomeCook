@@ -40,8 +40,8 @@ function Map(){
  return(
    <div>
      <div id="info">
-          {cookLocation.map((card) =>(
-            <div className="card"
+          {cookLocation.map((card,index) =>(
+            <div className="card" key={index}
             onMouseOver={() => {
               
               const currentPosition = {
@@ -54,7 +54,7 @@ function Map(){
                 <div className="card-body">
                     <div className="row">
                       <div className="col-xs-2">
-                      <img clasName="img-thumbnail" src="/steak.jpg" alt={card.name}/>
+                      <img className="img-thumbnail" src={card.src} alt={card.name}/>
                       </div>
                       <div className="col-xs-2">
                       <h5>{card.dish} by {card.name}</h5>
