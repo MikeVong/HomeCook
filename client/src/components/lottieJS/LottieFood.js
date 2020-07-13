@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from '../components/lottie/4762-food-carousel.json';
+import animationData from '../lottie/4762-food-carousel.json';
 
 export default function LottieFood() {
     const defaultOptions = {

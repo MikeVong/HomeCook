@@ -74,137 +74,202 @@ class Cooks extends Component {
         coordinates: this.state.coordinates
       })
         .then(alert("Cook info saved!"))
+        // .then(
+        //   <div className="modal">
+        //     <p>Dish information saved!</p>
+        //   </div>
+        // )
         .catch(err => console.log(err));
-    }
-    this.props.history.push('/');
+        this.props.history.push('/');
+    } else {alert("Please fill in the missing forms")}
   };
 
   render() {
     return (
-      <div className="container">
-        
-            <div>
-              <h1>Please tell us what you can make?</h1>
-            </div>
-            {/* <Jumbo>
-              <h1>Please tell us what you can make?</h1>
-            </Jumbo> */}
-            <form>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="name (required)"
-              />
-              <Search 
-                value={this.state.address}
-                onChange={this.handleSelect}
-                onSelect={this.handleSelect}
-                name="address"
-                />
-                
-              <Input
-                value={this.state.dish}
-                onChange={this.handleInputChange}
-                name="dish"
-                placeholder="dish name"
-              />
 
-              <fieldset>
-                <legend>
-                  You picked {this.state.src} as your image.
-                </legend>
-                    {foodImage.map((choice,index)=>
-                      <label>
-                        <Input type="radio"
-                        name="src"
-                        key={index}
-                        value={choice}
-                        checked={this.state.src === {choice}}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src={choice} alt={choice}/>
-                    </label>
-                    )}
-                    {/* <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/chicken.jpg"
-                        checked={this.state.src === "/chicken.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/chicken.jpg" alt="chicken"/>
-                    </label> */}
-                    {/* <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/dessert.jpg"
-                        checked={this.state.src === "/dessert.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/dessert.jpg" alt="dessert"/>
-                    </label>
-                    <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/steak.jpg"
-                        checked={this.state.src === "/steak.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/steak.jpg" alt="steak"/>
-                    </label>
-                    <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/Pork.jpg"
-                        checked={this.state.src === "/Pork.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/Pork.jpg" alt="Pork"/>
-                    </label> */}
-              </fieldset>
-              <TextArea
-                value={this.state.ingredients}
-                onChange={this.handleInputChange}
-                name="ingredients"
-                placeholder="ingredients (Optional)"
-              />
-              <Input
-                value={this.state.portions}
-                onChange={this.handleInputChange}
-                name="portions"
-                placeholder="How many Portions?"
-              />
-              <Input
-                value={this.state.cost}
-                onChange={this.handleInputChange}
-                name="cost"
-                placeholder="Price?"
-              />
-              <Input
-                value={this.state.email}
-                onChange={this.handleInputChange}
-                name="email"
-                placeholder="email@email.com"
-                type="email"
-              />
-              <Input
-                value={this.state.payBy}
-                onChange={this.handleInputChange}
-                name="payBy"
-                placeholder="payment type"
-              />
-              <FormBtn
-                disabled={!(this.state.address && this.state.name)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Cook
-              </FormBtn>
+  <div className="choppingBoard" id="cooksCard">
 
-              
-            </form>
-          </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    
+    <div className="container" id="information">
+      <div className="row">
+        <div className="col md-12">
+          <h1 className="dishInfo">Please Enter In Your Dish Info:</h1>
+        </div>
+      </div>
 
+      <div className="row">
+        <div className="col md-12">
+        <form>
+                          <Input
+                            value={this.state.name}
+                            onChange={this.handleInputChange}
+                            name="name"
+                            placeholder="name (required)"
+                          />
+                          <Search 
+                            value={this.state.address}
+                            onChange={this.handleSelect}
+                            onSelect={this.handleSelect}
+                            name="address"
+                            />
+                            
+                          <Input
+                            value={this.state.dish}
+                            onChange={this.handleInputChange}
+                            name="dish"
+                            placeholder="dish name"
+                          />
+
+                          <fieldset>
+                            <legend>
+                              You picked {this.state.src} as your image.
+                            </legend>
+                                {foodImage.map((choice,index)=>
+                                  <label>
+                                    <Input type="radio"
+                                    name="src"
+                                    key={index}
+                                    value={choice}
+                                    checked={this.state.src === {choice}}
+                                    onChange={this.handleRadioChange.bind(this)}
+                                    />
+                                    <img id="pix"src={choice} alt={choice}/>
+                                </label>
+                                )}
+                          </fieldset>
+                          <TextArea
+                            value={this.state.ingredients}
+                            onChange={this.handleInputChange}
+                            name="ingredients"
+                            placeholder="ingredients (Optional)"
+                          />
+                          <Input
+                            value={this.state.portions}
+                            onChange={this.handleInputChange}
+                            name="portions"
+                            placeholder="How many Servings?"
+                          />
+                          <Input
+                            value={this.state.cost}
+                            onChange={this.handleInputChange}
+                            name="cost"
+                            placeholder="Price?"
+                          />
+                          <Input
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            name="email"
+                            placeholder="email@email.com"
+                            type="email"
+                          />
+                          <Input
+                            value={this.state.payBy}
+                            onChange={this.handleInputChange}
+                            name="payBy"
+                            placeholder="payment type"
+                          />
+                          <FormBtn
+                            // disabled={!(this.state.address && this.state.name)}
+                            onClick={this.handleFormSubmit}
+                          >
+                            Submit Cook
+                          </FormBtn>         
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+      // <div className="choppingBoard">
+      //     <div className="container">
+      //           <div>
+      //             <h1 className="dishInfo">Please Enter In Your Dish Info:</h1>
+      //           </div>
+      //           <form>
+      //             <Input
+      //               value={this.state.name}
+      //               onChange={this.handleInputChange}
+      //               name="name"
+      //               placeholder="name (required)"
+      //             />
+      //             <Search 
+      //               value={this.state.address}
+      //               onChange={this.handleSelect}
+      //               onSelect={this.handleSelect}
+      //               name="address"
+      //               />
+                    
+      //             <Input
+      //               value={this.state.dish}
+      //               onChange={this.handleInputChange}
+      //               name="dish"
+      //               placeholder="dish name"
+      //             />
+
+      //             <fieldset>
+      //               <legend>
+      //                 You picked {this.state.src} as your image.
+      //               </legend>
+      //                   {foodImage.map((choice,index)=>
+      //                     <label>
+      //                       <Input type="radio"
+      //                       name="src"
+      //                       key={index}
+      //                       value={choice}
+      //                       checked={this.state.src === {choice}}
+      //                       onChange={this.handleRadioChange.bind(this)}
+      //                       />
+      //                       <img id="pix"src={choice} alt={choice}/>
+      //                   </label>
+      //                   )}
+      //             </fieldset>
+      //             <TextArea
+      //               value={this.state.ingredients}
+      //               onChange={this.handleInputChange}
+      //               name="ingredients"
+      //               placeholder="ingredients (Optional)"
+      //             />
+      //             <Input
+      //               value={this.state.portions}
+      //               onChange={this.handleInputChange}
+      //               name="portions"
+      //               placeholder="How many Servings?"
+      //             />
+      //             <Input
+      //               value={this.state.cost}
+      //               onChange={this.handleInputChange}
+      //               name="cost"
+      //               placeholder="Price?"
+      //             />
+      //             <Input
+      //               value={this.state.email}
+      //               onChange={this.handleInputChange}
+      //               name="email"
+      //               placeholder="email@email.com"
+      //               type="email"
+      //             />
+      //             <Input
+      //               value={this.state.payBy}
+      //               onChange={this.handleInputChange}
+      //               name="payBy"
+      //               placeholder="payment type"
+      //             />
+      //             <FormBtn
+      //               disabled={!(this.state.address && this.state.name)}
+      //               onClick={this.handleFormSubmit}
+      //             >
+      //               Submit Cook
+      //             </FormBtn>
+
+                  
+      //           </form>
+      //         </div>
+      // </div>
     );
   }
 }
