@@ -86,9 +86,7 @@ class Cooks extends Component {
             <div>
               <h1>Please tell us what you can make?</h1>
             </div>
-            {/* <Jumbo>
-              <h1>Please tell us what you can make?</h1>
-            </Jumbo> */}
+
             <form>
               <Input
                 value={this.state.name}
@@ -109,7 +107,6 @@ class Cooks extends Component {
                 name="dish"
                 placeholder="dish name"
               />
-
               <fieldset>
                 <legend>
                   You picked {this.state.src} as your image.
@@ -126,42 +123,6 @@ class Cooks extends Component {
                         <img id="pix"src={choice} alt={choice}/>
                     </label>
                     )}
-                    {/* <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/chicken.jpg"
-                        checked={this.state.src === "/chicken.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/chicken.jpg" alt="chicken"/>
-                    </label> */}
-                    {/* <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/dessert.jpg"
-                        checked={this.state.src === "/dessert.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/dessert.jpg" alt="dessert"/>
-                    </label>
-                    <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/steak.jpg"
-                        checked={this.state.src === "/steak.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/steak.jpg" alt="steak"/>
-                    </label>
-                    <label>
-                        <Input type="radio"
-                        name="src"
-                        value="/Pork.jpg"
-                        checked={this.state.src === "/Pork.jpg"}
-                        onChange={this.handleRadioChange.bind(this)}
-                        />
-                        <img id="pix"src="/Pork.jpg" alt="Pork"/>
-                    </label> */}
               </fieldset>
               <TextArea
                 value={this.state.ingredients}

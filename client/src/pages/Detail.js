@@ -9,26 +9,25 @@ class Detail extends Component {
     cook: {},
     count: 0
   };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+
   componentDidMount() {
     API.getCook(this.props.match.params.id)
       .then(res => this.setState({ cook: res.data},console.log(res.data)))
       .catch(err => console.log(err));
   }
 
-  incrementCount =() => {
-      this.setState({count: this.state.count + 1});
-  }
-  decrementCount= () => {
-      this.setState({count: this.state.count - 1});
-  }
+  // incrementCount =() => {
+  //     this.setState({count: this.state.count + 1});
+  // }
+  // decrementCount= () => {
+  //     this.setState({count: this.state.count - 1});
+  // }
 
 
 
   render() {
     return (
-    // <div style={{backgroundImage:`url(https://picsum.photos/200)`,  width: "100vw", height: "100vh"}}>
+    
       <div className="" style={{backgroundImage:`url(/FoodBackground.jpg)`,width: "100vw", height: "100vh"}}>
           <div className="row"style={{width: "100vw", height: "20vh"}}></div>
           <div className="row"style={{width: "100vw", height: "60vh"}}>
@@ -41,14 +40,15 @@ class Detail extends Component {
                   <button className="btn btn-warning mt-5 p-3">
                   <Link to="/eater">← Back to Eater</Link>
                   </button>
-                {/* <img src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100"}}/> */}
+               
                 </div>
                 <div className="col-md-6">
                 <h1>Dish Name: {this.state.cook.dish}</h1>
                 <h1>Cook by {this.state.cook.name}</h1>
-               <h3>Portions: <button type="button" onClick={this.decrementCount} className="btn btn-info m-3">-</button>
+                <h3>
+               {/* <h3>Portions: <button type="button" onClick={this.decrementCount} className="btn btn-info m-3">-</button>
                <span>{this.state.count}</span>
-               <span><button type="button" onClick={this.incrementCount} className="btn btn-info m-3">+</button></span>
+               <span><button type="button" onClick={this.incrementCount} className="btn btn-info m-3">+</button></span> */}
                 <button className="btn btn-success btn-lg ">
                   Buy
                 </button></h3>

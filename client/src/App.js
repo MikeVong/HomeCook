@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Choice from "./pages/Choice";
 import Cooks from "./pages/Cooks";
 import Eater from "./pages/Eater";
+import Checkout from "./pages/Checkout";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={Choice} />
           <Route exact path="/cooks" component={Cooks} />
           <Route exact path="/eater" component={Eater} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/cooks/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>

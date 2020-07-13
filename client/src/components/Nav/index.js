@@ -13,6 +13,9 @@ function Nav() {
       <a className="navbar-brand" href="/eater">
         Consumers
       </a>
+      <a className="navbar-brand" href="/checkout">
+        Checkout
+      </a>
      
     </nav>
   );
