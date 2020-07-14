@@ -9,7 +9,7 @@ const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
 const options={
   styles: mapStyles,
-  disableDefaultUI: true,
+  // disableDefaultUI: true,
   
 }
 

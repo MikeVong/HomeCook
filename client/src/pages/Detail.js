@@ -2,30 +2,32 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 
-
+const cart= localStorage.getItem("checkout") 
+? JSON.parse(localStorage.getItem("checkout")): [];
 
 class Detail extends Component {
   state = {
     cook: {},
-    count: 0
+    cart:{}
   };
 
   componentDidMount() {
     API.getCook(this.props.match.params.id)
       .then(res => this.setState({ cook: res.data},console.log(res.data)))
+      .then(localStorage.setItem("checkout", JSON.stringify(cart)))
       .catch(err => console.log(err));
   }
 
-  // incrementCount =() => {
-  //     this.setState({count: this.state.count + 1});
-  // }
-  // decrementCount= () => {
-  //     this.setState({count: this.state.count - 1});
-  // }
 
-
+  addToCart = (cook) => {
+    
+    cart.push(cook);
+    this.setState({cart: cook});
+    localStorage.setItem("checkout", JSON.stringify(cart));
+  }
 
   render() {
+    
     return (
     
       <div className="" style={{backgroundImage:`url(/FoodBackground.jpg)`,width: "100vw", height: "100vh"}}>
@@ -37,21 +39,19 @@ class Detail extends Component {
               <div className="row back shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="col-md-6">
                   <img className="img-thumbnail rounded"src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100%"}}/>
-                  <button className="btn btn-warning mt-5 p-3">
-                  <Link to="/eater">← Back to Eater</Link>
-                  </button>
+                  <h4><button className="btn btn-warning">
+                  <Link to="/eater">Back to Eater</Link>
+                  </button></h4>
                
                 </div>
                 <div className="col-md-6">
                 <h1>Dish Name: {this.state.cook.dish}</h1>
                 <h1>Cook by {this.state.cook.name}</h1>
-                <h3>
-               {/* <h3>Portions: <button type="button" onClick={this.decrementCount} className="btn btn-info m-3">-</button>
-               <span>{this.state.count}</span>
-               <span><button type="button" onClick={this.incrementCount} className="btn btn-info m-3">+</button></span> */}
-                <button className="btn btn-success btn-lg ">
-                  Buy
-                </button></h3>
+                <h3><button className="btn btn-success btn-lg "
+                            onClick= {()=> this.addToCart(this.state.cook)}
+                    >Buy
+                    </button>
+                    <span><button><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
                 <h4>Address:</h4> 
                 {this.state.cook.address}
                 <h4>Protions Available: {this.state.cook.portions}</h4>
@@ -76,3 +76,4 @@ class Detail extends Component {
 }
 
 export default Detail;
+

@@ -50,7 +50,7 @@
   
   #info{
     position: absolute;
-    top: 5rem;
+    top: 8rem;
     left: 1rem;
     color: #281414;
     z-index: 10;
@@ -100,32 +100,117 @@ input[type="radio"]:checked + label {
   width: 200px;
 }
 
-a {
-  color: white;
-}
+/* CHOICE PAGE SECTION */
 
-a:hover {
-  color: rgba(255, 255, 255, 0.2);
-}
+      .jumbotron{
+        background-image: linear-gradient(rgba(97, 97, 97, 0.3), rgba(0, 0, 0, 0)), url(/spicejumbo.jpg);
+        -webkit-background-size: 100% 100%; 
+        -moz-background-size: 100% 100%; 
+        -o-background-size: 100% 100%; 
+        background-size: 100%;
+        /* background-attachment: fixed; */
+        background-repeat: no-repeat;
+        height: 20%;
+      }
 
-.cookInfo {
-  text-align: center;
-}
+      .nameCo {
+        font-family: 'Copperplate', "Copperplate Gothic Light", fantasy; 
+        font-size: 750%; 
+        font-style: normal; 
+        font-variant: normal; 
+        font-weight: bold; 
+        line-height: 26px; 
+        color: white;
+        padding-top: 15%;
+        padding-bottom: 2%;
+        text-shadow: 5px 5px 3px rgba(255, 255, 255, 0.39);
+      }
 
-.jumbotron{
-  background-image: url(/foodbkground.png);
-  -webkit-background-size: 100% 100%; 
-  -moz-background-size: 100% 100%; 
-  -o-background-size: 100% 100%; 
-  background-size: cover;
-  height: 400px;
-}
-/* .overlay {
-  background: url(../images/cooking.png);
-  display: none;
-} */
+      #cookCard {
+        padding-top: 20%;
+        font-size: 120%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        padding-left: 20%;
+        font-weight: 90%;
+      }
 
-/* #cooks:hover .overlay {
-  color: rgba(255, 255, 255, 0.2); */
-  /* display: block; */
-/* } */
+      #lottiePan {
+        padding-top: unset;
+        padding-bottom: 2%;
+      }
+
+      #cookCard2 {
+        padding-top: 20%;
+        padding-left: 30%;
+        font-weight: 100%;
+      }
+
+      #consumerInfo {
+        font-size: 120%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 90%;
+        /* padding-left: 15%; */
+      }
+
+      #choicePage {
+        background-image: linear-gradient(rgba(226, 226, 226, 0.7), rgba(230, 230, 230, 0.9)), url(/choicesbkgrnd4.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      #choicesbtn {
+        font-size: xx-large;
+        /* font-weight: bold; */
+        color: white;
+        align-content: center;
+        border-style: solid;
+        border-radius: 7%;
+        padding: 1%;
+        background-color: rgb(51, 51, 51);
+        
+      }
+
+      h1 {
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+
+      #cRow {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
+/* END CHOICE PAGE */
+
+/* COOKS PAGE */
+      .choppingBoard {
+        background-image: url(/choppingboard.png);
+        background-size: cover;
+        height: 400%;
+        width: auto;
+      }
+
+      #cooksCard {
+        padding-bottom: 10%;
+      }
+
+      .dishInfo {
+        /* padding-top: 200px; */
+        /* color: white; */
+      }
+
+      #information {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+/* END COOKS PAGE */
+
+/* INDEX.HTML */
+      .page-footer {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: rgb(43, 43, 43);
+        color: white;
+        height: auto;
+        background-attachment: fixed;
+}
+/* END INDEX.HTML */
