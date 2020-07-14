@@ -6,6 +6,7 @@ import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
 
+
 class Cooks extends Component {
   state = {
     cooks: [],
@@ -86,6 +87,7 @@ class Cooks extends Component {
 
   render() {
     return (
+      
 
   <div className="choppingBoard" id="cooksCard">
 
@@ -96,13 +98,13 @@ class Cooks extends Component {
     <br></br>
     
     <div className="container" id="information">
-      <div className="row">
+      <div className="row" id="cRow">
         <div className="col md-12">
           <h1 className="dishInfo">Please Enter In Your Dish Info:</h1>
         </div>
       </div>
 
-      <div className="row">
+      <div className="row" id="cRow">
         <div className="col md-12">
         <form>
                           <Input
@@ -148,6 +150,7 @@ class Cooks extends Component {
                             name="ingredients"
                             placeholder="ingredients (Optional)"
                           />
+
                           <Input
                             value={this.state.portions}
                             onChange={this.handleInputChange}

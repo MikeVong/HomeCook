@@ -15,7 +15,7 @@ function Choice() {
         </div>
 
         <div className="container">
-            <div className="row">
+            <div className="row" id="cRow">
                 <div className="col md-6">
                     <div id="cookCard">
                         <h1>Become a Cook</h1>
@@ -32,7 +32,7 @@ function Choice() {
 
                 {/* <div className="col lg-6"></div> */}
 
-            <div className="row">
+            <div className="row" id="cRow">
                 <div className="col md-6">
                         <LottieFood></LottieFood>
                 </div>

@@ -83,11 +83,6 @@ function Map(){
                         lng: loc.coordinates[0].lng}} 
                         onMouseOver={() => {
                           setSelectedCook(loc);
-                          // const currentPosition = {
-                          //   lat: loc.coordinates[0].lat,
-                          //   lng: loc.coordinates[0].lng
-                          //   }
-                          //   setCurrentPosition(currentPosition);
                         }}  
               icon={{
                 url: "/food.png",

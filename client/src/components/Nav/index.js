@@ -10,7 +10,7 @@ function Nav() {
       <a className="navbar-brand" href="/">
         Home-cooks
       </a>
-      
+
       <div  id="choices">
         <a className="navbar-brand" href="/cooks">
           Cooks
@@ -20,9 +20,9 @@ function Nav() {
         </a>
       </div>
       
-      {/* <a className="navbar-brand" href="/">
+      <a className="navbar-brand" href="/checkout">
         shopping cart
-      </a> */}
+      </a>
 
      
     </nav>
