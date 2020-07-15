@@ -11,21 +11,35 @@ export default function Search(props) {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
+            <input 
+            {...getInputProps({ 
+              placeholder: "Type address" ,
+              className: 'location-search-input',
+              })} 
+            />
 
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>loading...</div>}
 
-            <input {...getInputProps({ placeholder: "Type address" })} />
-
-            <div>
-              {loading ? <div>...loading</div> : null}
-
-              {suggestions.map((suggestion) => { 
-                const style = {
-                  backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
-                };
+              {suggestions.map(suggestion => { 
+                
+                const className= suggestion.active
+                  ? 'suggestion-item-active'
+                  : 'suggestion-item';
+                const style = suggestion.active 
+                  ? { backgroundColor: '#fff1ac', cursor: 'pointer' }
+                  : { backgroundColor: '#b689b0', cursor: 'pointer' };
+                
                 
                 return (
-                  <div key={suggestion.id} {...getSuggestionItemProps(suggestion, { style })}>
-                    {suggestion.description} 
+                  <div
+                  key={suggestion.id}
+                    {...getSuggestionItemProps(suggestion,{ 
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span> 
                   </div>
                 );
               })}

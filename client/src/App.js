@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/cooks" component={Cooks} />
           <Route exact path="/eater" component={Eater} />
           <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/cooks/:id" component={Detail} />
+          <Route  path="/cooks/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>
       </div>

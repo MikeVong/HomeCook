@@ -1,4 +1,4 @@
-import React,{useState}from "react";
+import React,{useState, useEffect}from "react";
 import "../App.css";
 import API from "../utils/API";
 
@@ -7,6 +7,11 @@ function Checkout() {
 const [cart, setCart] = useState(localStorage.getItem("checkout") 
 ? JSON.parse(localStorage.getItem("checkout")): [])
 
+
+useEffect(() => {
+  JSON.parse(localStorage.getItem("checkout"));
+
+})
 
  const removeFromCart =(remove)=> {
             setCart(cart.filter((item) => item !== remove));
@@ -19,13 +24,14 @@ const [cart, setCart] = useState(localStorage.getItem("checkout")
     API.deleteCook(id)
       .then(alert("cook was deleted, email sent to cook!"))
       .then(localStorage.clear())
+      .then(window.location.reload())
       .catch(err => console.log(err));
   };
     
     return (
        
-        <div className="jumbotron text-center">
-           <div>
+        <div className="jumbotron">
+           {/* <div> */}
            {console.log(cart)}
 
            {cart.map((inCart, index) =>(
@@ -33,21 +39,26 @@ const [cart, setCart] = useState(localStorage.getItem("checkout")
                 <div className="card-body">
                     <div className="row">
                       <div className="col-xs-2">
-                      <img className="img-thumbnail" src={inCart.src} alt={inCart.name}/>
+                        <img className="img-thumbnail" src={inCart.src} alt={inCart.name}/>
                       </div>
-                      <div className="col-xs-2">
-                      <h5>{inCart.dish} by {inCart.name}</h5>
-                      <h5>{inCart.address}</h5>
+                      <div className="col-xs-10">
+                        <h5>{inCart.dish} by {inCart.name} at <span>{inCart.address}</span>
+                        <button className="btn btn-warning float-right" onClick= {()=> removeFromCart(inCart)}>remove</button>
+                      </h5>
+                      <h4>
+                        Cost: ${inCart.cost}
+                      </h4>
                       </div>
                       {/* {console.log(inCart._id)} */}
-                      <button className="btn btn-warning" onClick= {()=> removeFromCart(inCart)}>remove</button>
+                     
                     </div>
                 </div>
             </div>
           ))}
-          <button className="btn btn-info" onClick= {()=> deleteCook(cart[0]._id)}>checkout</button>
+
+          <button className="btn btn-info float-right" onClick= {()=> deleteCook(cart[0]._id)}>checkout</button>
            </div>
-        </div>
+        // </div>
 
     );
 }
