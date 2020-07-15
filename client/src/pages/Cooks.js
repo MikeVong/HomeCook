@@ -36,6 +36,9 @@ class Cooks extends Component {
   };
 
 
+  handleSearchChange = address =>{
+    this.setState({address});
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -44,12 +47,17 @@ class Cooks extends Component {
     });
   };
 
-  handleSelect = async value => {
-    
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
-    this.setState({address: value,
-                    coordinates: latLng});
+  handleSelect = async address => {
+    await geocodeByAddress(address)
+    .then(result => getLatLng(result[0]))
+    .then(latLng => this.setState({address: address, coordinates: latLng}))
+
+    .catch(error => console.log('Error', error))
+    // const results = await geocodeByAddress(address);
+    // const latLng = await getLatLng(results[0]);
+    // this.setState({address: address,
+    //   coordinates: latLng})
+
 
   };
 
@@ -115,10 +123,10 @@ class Cooks extends Component {
                           />
                           <Search 
                             value={this.state.address}
-                            onChange={this.handleSelect}
+                            onChange={this.handleSearchChange}
                             onSelect={this.handleSelect}
-                            name="address"
                             />
+                           
                             
                           <Input
                             value={this.state.dish}
@@ -132,10 +140,9 @@ class Cooks extends Component {
                               You picked {this.state.src} as your image.
                             </legend>
                                 {foodImage.map((choice,index)=>
-                                  <label>
+                                  <label key={index}>
                                     <Input type="radio"
                                     name="src"
-                                    key={index}
                                     value={choice}
                                     checked={this.state.src === {choice}}
                                     onChange={this.handleRadioChange.bind(this)}
