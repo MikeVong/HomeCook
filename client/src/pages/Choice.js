@@ -9,7 +9,7 @@ function Choice() {
     return (
     <>
     <div id="choicePage">
-        <div className="jumbotron text-center">
+        <div className="jumbotron text-center" id="jumbo">
             <h1 className="nameCo">Home-cooks</h1>
             {/* <p>A community place to sell and buy meals</p> */}
         </div>
