@@ -9,17 +9,16 @@ const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
 const options={
   styles: mapStyles,
-  width: `300px`,
-  height: `300px`
   // disableDefaultUI: true,
   
 }
 
 function Map(){
   const[selectedCook,setSelectedCook] = useState(null);
+  const [disabled,setDisable]= useState(false);
   const url ="/api/cooks"
   const { data, error } = useSwr(url, fetcher );
-  const cookLocation = data && !error ? data.slice(0,10) : [];
+  const cookLocation = data && !error ? data.slice(0,20) : [];
   
   const [ currentPosition, setCurrentPosition ] = useState({lat: 27.994402, lng: -81.760254});
   
@@ -33,7 +32,6 @@ function Map(){
 
 	useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-
 	},[])
 
 
@@ -83,8 +81,9 @@ function Map(){
                         onMouseOver={() => {
                           setSelectedCook(loc);
                         }}  
+
               icon={{
-                url: "/food.png",
+                url: (loc.src),
                 scaledSize: new window.google.maps.Size(30,30)
               }}    
       />
@@ -111,7 +110,11 @@ function Map(){
               <h3>Name: {selectedCook.name}</h3>
               <Link to={"/cooks/" + selectedCook._id}>
                       <button 
-                      className="btn btn-danger">
+                      className="btn btn-danger"
+                      onClick= {()=> {
+                        
+                      }}
+                      >
                         Go To
                       </button>
                     </Link> 
