@@ -2,28 +2,40 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 
+
 const cart= localStorage.getItem("checkout") 
 ? JSON.parse(localStorage.getItem("checkout")): [];
+let disabled = false;
 
 class Detail extends Component {
   state = {
     cook: {},
-    cart:{}
+    cart:{},
   };
 
   componentDidMount() {
+    disabled = false;
+    for(let i=0;i<cart.length;i++){
+      console.log(cart[i]._id)
+      if(cart[i]._id === this.props.match.params.id){
+        disabled = true;
+      }
+
+    }
     API.getCook(this.props.match.params.id)
       .then(res => this.setState({ cook: res.data},console.log(res.data)))
       .then(localStorage.setItem("checkout", JSON.stringify(cart)))
       .catch(err => console.log(err));
+      
   }
 
 
   addToCart = (cook) => {
-    
     cart.push(cook);
-    this.setState({cart: cook});
+    this.setState({cart: cook });
     localStorage.setItem("checkout", JSON.stringify(cart));
+    disabled = true;
+
   }
 
   render() {
@@ -48,8 +60,11 @@ class Detail extends Component {
                 <h1>Dish Name: {this.state.cook.dish}</h1>
                 <h1>Cook by {this.state.cook.name}</h1>
                 <h3><button className="btn btn-success btn-lg "
-                            onClick= {()=> this.addToCart(this.state.cook)}
-                    >Buy
+                            onClick= {()=> this.addToCart(this.state.cook)
+                                          
+                                    }
+                            disabled= {disabled}>
+                    Add to Cart
                     </button>
                     <span><button><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
                 <h4>Address:</h4> 
