@@ -15,7 +15,6 @@ const options={
 
 function Map(){
   const[selectedCook,setSelectedCook] = useState(null);
-  const [disabled,setDisable]= useState(false);
   const url ="/api/cooks"
   const { data, error } = useSwr(url, fetcher );
   const cookLocation = data && !error ? data.slice(0,20) : [];
@@ -111,9 +110,6 @@ function Map(){
               <Link to={"/cooks/" + selectedCook._id}>
                       <button 
                       className="btn btn-danger"
-                      onClick= {()=> {
-                        
-                      }}
                       >
                         Go To
                       </button>
