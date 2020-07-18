@@ -1,6 +1,7 @@
 import React,{useState, useEffect}from "react";
 import "../App.css";
 import API from "../utils/API";
+import Nav from "../components/Nav";
 
 
 function Checkout() {
@@ -29,9 +30,9 @@ useEffect(() => {
   };
     
     return (
-       
         <div className="jumbotron">
-           {/* <div> */}
+       <Nav />
+
            {console.log(cart)}
 
            {cart.map((inCart, index) =>(

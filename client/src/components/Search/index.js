@@ -15,6 +15,7 @@ export default function Search(props) {
             {...getInputProps({ 
               placeholder: "Type address" ,
               className: 'location-search-input',
+              size: '137',
               })} 
             />
 

@@ -203,7 +203,22 @@ input[type="radio"]:checked + label {
         background-color: rgba(255, 255, 255, 0.9);
       }
 
+      /* #search {
+        width: 100%;
+      } */
+
 /* END COOKS PAGE */
+
+/* DETAILS PAGE */
+      .details {
+        background-image: linear-gradient(rgba(85, 85, 85, 0.541), rgba(230, 230, 230, 0.596)),url(/foodBackground.jpg);
+      }
+
+      /* .purchaseCard {
+        background-color: black;
+      } */
+
+/* END DETAILS PAGE */
 
 /* INDEX.HTML */
       .page-footer {

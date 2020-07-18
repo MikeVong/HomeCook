@@ -13,10 +13,10 @@ function Nav() {
 
       <div  id="choices">
         <a className="navbar-brand" href="/cooks">
-          Cooks
+          Cook
         </a>
         <a className="navbar-brand" href="/eater">
-          Consumers
+          Eat
         </a>
       </div>
       
