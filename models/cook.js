@@ -7,7 +7,7 @@ const cookSchema = new Schema({
   dish: { type: String },
   src: {type: String},
   ingredients: { type: String },
-  portions: { type: Number },
+  portions: { type: String },
   cost: { type: Number },
   email: { type: String },
   payBy: {type: String},
