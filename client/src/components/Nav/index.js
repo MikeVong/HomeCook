@@ -18,9 +18,11 @@ function Nav() {
         <a className="navbar-brand" href="/eater">
           Eat
         </a>
+        <a href="/checkout" className="fa fa-shopping-cart" id="favicon"></a>
+        {/* <a href="/checkout">shopping cart</a> */}
       </div>
       
-        <ul className="list-group list-group-horizontal">
+        {/* <ul className="list-group list-group-horizontal">
           <li className="list-group-item">
           <a  href="/cooks">Cooks</a>
           </li>
@@ -30,7 +32,7 @@ function Nav() {
           <li className="list-group-item">
           <a href="/checkout">shopping cart</a>
           </li>
-        </ul>
+        </ul> */}
         
       
       

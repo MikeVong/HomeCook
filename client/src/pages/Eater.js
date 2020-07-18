@@ -38,6 +38,7 @@ function Map(){
 
  return(
    <>
+
     <div className="row">
       <div className="" id="info">
             {cookLocation.map((card,index) =>(
@@ -129,12 +130,14 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function Eater(){
   return( 
+
       <div style={{ width: "100vw", height: "90vh" }}>
+        <Nav />
         <WrappedMap
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCFX4fMFqcH0z5pM2gMhvX6X9Yrk__7suE`}
         loadingElement={<div style={{ height: `100%`}} />}
         containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
+        mapElement={<div style={{ height: `95%` }} />}
       />
       </div>
   );
