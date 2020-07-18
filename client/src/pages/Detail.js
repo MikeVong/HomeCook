@@ -3,28 +3,38 @@ import { Link } from "react-router-dom";
 import API from "../utils/API";
 import Nav from "../components/Nav";
 
+
 const cart= localStorage.getItem("checkout") 
 ? JSON.parse(localStorage.getItem("checkout")): [];
+let disabled = false;
 
 class Detail extends Component {
   state = {
     cook: {},
-    cart:{}
+    cart:{},
   };
 
   componentDidMount() {
+    disabled = false;
+    for(let i=0;i<cart.length;i++){
+      if(cart[i]._id === this.props.match.params.id){
+        disabled = true;
+      }
+    }
     API.getCook(this.props.match.params.id)
       .then(res => this.setState({ cook: res.data},console.log(res.data)))
       .then(localStorage.setItem("checkout", JSON.stringify(cart)))
       .catch(err => console.log(err));
+      
   }
 
 
   addToCart = (cook) => {
-    
     cart.push(cook);
-    this.setState({cart: cook});
+    this.setState({cart: cook });
     localStorage.setItem("checkout", JSON.stringify(cart));
+    disabled = true;
+
   }
 
   render() {
@@ -52,15 +62,15 @@ class Detail extends Component {
                   <div className="col-md-6">
                   <h1>Dish Name: {this.state.cook.dish}</h1>
                   <h1>Cook by {this.state.cook.name}</h1>
-                  <h3><button className="btn btn-success btn-lg "
+                  <h3><button className="btn btn-success btn-lg"
                               onClick= {()=> this.addToCart(this.state.cook)}
-                      >Buy
+                              disabled= {disabled}>
+                      Add to Cart
                       </button>
-                      <span><button><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
+                      <span><button className="btn btn-info btn-lg"><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
                   <h4>Address:</h4> 
                   {this.state.cook.address}
-                  <h4>Portions Available: {this.state.cook.portions}</h4>
-                  
+                  <h4>Protions Available: {this.state.cook.portions}</h4>
                   <h4>Cost: ${this.state.cook.cost}</h4>
                   <h4>Payment Accepted: {this.state.cook.payBy}</h4>
                   <h4>Ingredients:</h4>

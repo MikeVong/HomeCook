@@ -15,6 +15,8 @@
   
   .food-marker img {
     width: 25px;
+    border-radius: 50%;
+
   }
 
   .locate {
@@ -51,11 +53,13 @@
   #info{
     position: absolute;
     top: 8rem;
-    left: 1rem;
+    left: 0rem;
     color: #281414;
     z-index: 10;
     margin: 0;
     padding: 0;
+    overflow-y:auto;
+    height: 80vh;
   }
 
   .seethough{
@@ -70,6 +74,7 @@
   .card-body img{
     width: 50px;
     height: 50px;
+    border-radius: 50%;
   }
 
   .card{
@@ -102,13 +107,12 @@ input[type="radio"]:checked + label {
 
 /* CHOICE PAGE SECTION */
 
-      .jumbotron{
+      #jumbo{
         background-image: linear-gradient(rgba(97, 97, 97, 0.3), rgba(0, 0, 0, 0)), url(/spicejumbo.jpg);
         -webkit-background-size: 100% 100%; 
         -moz-background-size: 100% 100%; 
         -o-background-size: 100% 100%; 
         background-size: 100%;
-        /* background-attachment: fixed; */
         background-repeat: no-repeat;
         height: 20%;
       }

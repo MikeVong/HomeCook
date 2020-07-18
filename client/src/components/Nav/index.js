@@ -20,9 +20,21 @@ function Nav() {
         </a>
       </div>
       
-      <a className="navbar-brand" href="/checkout">
-        shopping cart
-      </a>
+        <ul className="list-group list-group-horizontal">
+          <li className="list-group-item">
+          <a  href="/cooks">Cooks</a>
+          </li>
+          <li className="list-group-item">
+          <a href="/eater">Consumers</a>
+          </li>
+          <li className="list-group-item">
+          <a href="/checkout">shopping cart</a>
+          </li>
+        </ul>
+        
+      
+      
+
 
      
     </nav>

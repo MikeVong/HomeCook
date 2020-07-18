@@ -18,7 +18,7 @@ function Map(){
   const[selectedCook,setSelectedCook] = useState(null);
   const url ="/api/cooks"
   const { data, error } = useSwr(url, fetcher );
-  const cookLocation = data && !error ? data.slice(0,10) : [];
+  const cookLocation = data && !error ? data.slice(0,20) : [];
   
   const [ currentPosition, setCurrentPosition ] = useState({lat: 27.994402, lng: -81.760254});
   
@@ -32,51 +32,43 @@ function Map(){
 
 	useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-
 	},[])
 
 
 
-
  return(
-
-   <div>
-       <div>
-          <Nav />
-        </div>
-     <div id="info">
-          {cookLocation.map((card,index) =>(
-            <div className="card" key={index}
-            onMouseOver={() => {
-              
-              const currentPosition = {
-              lat: card.coordinates[0].lat,
-              lng: card.coordinates[0].lng
-              }
-              setCurrentPosition(currentPosition);
-            }}  
-            >
-                <div className="card-body">
-                    <div className="row">
-                      <div className="col-xs-2">
-                      <img className="img-thumbnail" src={card.src} alt={card.name}/>
+   <>
+    <div className="row">
+      <div className="" id="info">
+            {cookLocation.map((card,index) =>(
+              <div className="card" key={index}
+              onMouseOver={() => {
+                
+                const currentPosition = {
+                lat: card.coordinates[0].lat,
+                lng: card.coordinates[0].lng
+                }
+                setCurrentPosition(currentPosition);
+              }}  
+              >
+                  <div className="card-body">
+                      <div className="row">
+                        <div className="col-xs-1">
+                        <img className="img-thumbnail" src={card.src} alt={card.name}/>
+                        </div>
+                        <div className="col-xs-2">
+                        <h5>{card.dish} by {card.name}</h5>
+                        <h5>{card.address}</h5>
+                        </div>
                       </div>
-                      <div className="col-xs-2">
-                      <h5>{card.dish} by {card.name}</h5>
-                      <h5>{card.address}</h5>
-                      </div>
-                    </div>
-                   
-                </div>
-          
-            </div>
-          ))}
+                    
+                  </div>
+            
+              </div>
+            ))}
       </div>
-     
-
-     
-    
-  <GoogleMap
+      <div>
+          <GoogleMap
     zoom={12}
     center= {currentPosition}
     options={options}
@@ -89,8 +81,9 @@ function Map(){
                         onMouseOver={() => {
                           setSelectedCook(loc);
                         }}  
+
               icon={{
-                url: "/food.png",
+                url: (loc.src),
                 scaledSize: new window.google.maps.Size(30,30)
               }}    
       />
@@ -117,7 +110,8 @@ function Map(){
               <h3>Name: {selectedCook.name}</h3>
               <Link to={"/cooks/" + selectedCook._id}>
                       <button 
-                      className="btn btn-danger">
+                      className="btn btn-danger"
+                      >
                         Go To
                       </button>
                     </Link> 
@@ -126,21 +120,23 @@ function Map(){
     )}
 
   </GoogleMap>
-
-  </div>
+      </div>
+    </div>
+    </>
  );
 }
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function Eater(){
-  return( <div style={{ width: "100vw", height: "100vh" }}>
+  return( 
+      <div style={{ width: "100vw", height: "90vh" }}>
         <WrappedMap
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCFX4fMFqcH0z5pM2gMhvX6X9Yrk__7suE`}
-        loadingElement={<div style={{ height: `100%` }} />}
+        loadingElement={<div style={{ height: `100%`}} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
-        </div>
+      </div>
   );
 }
 

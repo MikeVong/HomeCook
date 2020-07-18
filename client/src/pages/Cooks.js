@@ -3,11 +3,14 @@ import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Search from "../components/Search";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import Nav from "../components/Nav";
 
 const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
+import Modal from "react-modal";
 
-
+const content = {top: '140px',left: '240px',right: '240px',bottom: '440px',
+                border: '1px solid #ccc',background: '#fff',overflow: 'auto',
+                WebkitOverflowScrolling: 'touch',borderRadius: '4px',outline: 'none',padding: '20px'}
+Modal.setAppElement('#root')
 class Cooks extends Component {
   state = {
     cooks: [],
@@ -20,22 +23,15 @@ class Cooks extends Component {
     cost:"",
     email: "",
     payBy: "",
-    coordinates:[0,0]
+    coordinates:[0,0],
+    modalShow: false,
     
   };
-
-  componentDidMount() {
-    this.loadCooks();
+ handleModalClose =() =>{
+    this.setState({modalShow: false});
+    this.props.history.push('/')
   }
-
-  loadCooks = () => {
-    API.getCooks()
-      .then(res =>
-        this.setState({ cooks: res.data})
-      )
-      .catch(err => console.log(err));
-  };
-
+  
 
   handleSearchChange = address =>{
     this.setState({address});
@@ -52,14 +48,7 @@ class Cooks extends Component {
     await geocodeByAddress(address)
     .then(result => getLatLng(result[0]))
     .then(latLng => this.setState({address: address, coordinates: latLng}))
-
     .catch(error => console.log('Error', error))
-    // const results = await geocodeByAddress(address);
-    // const latLng = await getLatLng(results[0]);
-    // this.setState({address: address,
-    //   coordinates: latLng})
-
-
   };
 
   handleRadioChange = (event) => {
@@ -68,9 +57,10 @@ class Cooks extends Component {
     })
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.name && this.state.address) {
+      this.setState({modalShow: true});
       API.saveCook({
         name: this.state.name,
         address: this.state.address,
@@ -83,15 +73,11 @@ class Cooks extends Component {
         payBy: this.state.payBy,
         coordinates: this.state.coordinates
       })
-        .then(alert("Cook info saved!"))
-        // .then(
-        //   <div className="modal">
-        //     <p>Dish information saved!</p>
-        //   </div>
-        // )
+        // .then(this.props.history.push('/')) 
         .catch(err => console.log(err));
-        this.props.history.push('/');
-    } else {alert("Please fill in the missing forms")}
+
+
+    } 
   };
 
   render() {
@@ -102,6 +88,17 @@ class Cooks extends Component {
   <Nav />
 
 
+    <Modal
+      isOpen={this.state.modalShow}
+      style={{content: content}}
+    >
+    <h2 className="bg-info text-center">Thank you for Using us</h2>
+    <p>An Email will be sent to you when food is ordered. Once it is order, your customer will come in 45 mins to pickup the food.</p>
+    <div>
+    <button className="btn btn-success float-right"onClick={()=> this.handleModalClose() }>Close</button>
+    </div>
+    
+  </Modal>
     <br></br>
     <br></br>
     <br></br>
@@ -246,7 +243,7 @@ class Cooks extends Component {
                           </div>
                         
                           <FormBtn
-                            // disabled={!(this.state.address && this.state.name)}
+                            disabled={!(this.state.address && this.state.name)}
                             onClick={this.handleFormSubmit}
                           >
                             Submit Cook
