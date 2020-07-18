@@ -9,7 +9,21 @@ function Choice() {
     return (
     <>
     <div id="choicePage">
+
+
         <div className="jumbotron text-center" id="jumbo">
+
+        <a href="#cookCard" id="start">Get Started</a>
+        {/* <div className="navbar navbar-expand-lg" id="choiceNav">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active" id="navStart">
+                        <a className="nav-link" href="#cookCard" id="start">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div> */}
+
             <h1 className="nameCo">Home-cooks</h1>
             {/* <p>A community place to sell and buy meals</p> */}
         </div>
@@ -29,6 +43,8 @@ function Choice() {
                     <LottiePan></LottiePan>
                 </div>
             </div>
+
+
 
                 {/* <div className="col lg-6"></div> */}
 

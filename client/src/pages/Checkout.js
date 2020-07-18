@@ -39,7 +39,7 @@ useEffect(() => { JSON.parse(Storage) })
     
     return (
           
-          <div className="jumbotron bg-info">
+          <div className="checkout">
           <Nav />
             <Modal
                 isOpen={modalShow}
@@ -53,7 +53,7 @@ useEffect(() => { JSON.parse(Storage) })
               
             </Modal>
            {console.log(cart)}
-           <div className="text-center">
+           <div className="text-center" id="chkout">
              {!cart.length ? (
                <h1>No item in Cart</h1>
              ):( <div>
@@ -62,8 +62,10 @@ useEffect(() => { JSON.parse(Storage) })
              </div>)}
             
            </div>
-           <div className="container bg-danger">
-            <table className="table table-hover">
+
+
+           <div className="container" id="cartItems">
+            <table className="table">
               <tbody>
                 {cart.map((inCart, index)=> (
                   <tr  key={index}>
@@ -86,6 +88,8 @@ useEffect(() => { JSON.parse(Storage) })
             </table>
 
 </div>
+<div className="bottom"></div>
+                <br></br>
            </div>
 
 

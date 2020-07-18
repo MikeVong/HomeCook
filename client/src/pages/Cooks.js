@@ -3,14 +3,20 @@ import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Search from "../components/Search";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import Nav from "../components/Nav";
+import Modal from "react-modal";
+// import Modal from 'react-bootstrap';
 
 const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
-import Modal from "react-modal";
+
 
 const content = {top: '140px',left: '240px',right: '240px',bottom: '440px',
                 border: '1px solid #ccc',background: '#fff',overflow: 'auto',
                 WebkitOverflowScrolling: 'touch',borderRadius: '4px',outline: 'none',padding: '20px'}
 Modal.setAppElement('#root')
+
+// const handleClose = () => setShow(false);
+// const handleShow = () => setShow(true)
 class Cooks extends Component {
   state = {
     cooks: [],
@@ -87,13 +93,52 @@ class Cooks extends Component {
   <div className="choppingBoard" id="cooksCard">
   <Nav />
 
+  {/* <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Thank you for posting your dish</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>An email will be sent to you once someone has placed the order for your dish.
+          Your customer will then come meet you at your chosen location in the next 45 minutes after purchase
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal> */}
+ 
+
+  {/* <div className="modal" tabindex="-1" role="dialog"
+  isOpen={this.state.modalShow}>
+      <div className="modal-dialog" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">Thank you for posting your dish</h5>
+            <button type="button" className="close" data-dismiss="modal" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div>
+              <div className="modal-body">
+              <p>An Email will be sent to you once someone has placed the order for your dish.</p>
+              <p>Your customer will then come meet you at your chosen location in the next 45 minutes after purchase.</p>
+              </div>
+              <div className="modal-footer">
+              <button className="btn btn-success float-right"onClick={()=> this.handleModalClose() }>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div> */}
 
     <Modal
       isOpen={this.state.modalShow}
       style={{content: content}}
     >
-    <h2 className="bg-info text-center">Thank you for Using us</h2>
-    <p>An Email will be sent to you when food is ordered. Once it is order, your customer will come in 45 mins to pickup the food.</p>
+    <h2 className="bg-info text-center">Thank you for posting your dish</h2>
+    <p>An Email will be sent to you once someone has placed the order for your dish.</p>
+    <p>Your customer will then come meet you at your chosen location in the next 45 minutes after purchase.</p>
     <div>
     <button className="btn btn-success float-right"onClick={()=> this.handleModalClose() }>Close</button>
     </div>

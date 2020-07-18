@@ -4,5 +4,11 @@ nav {
 }
 
 #choices {
-    padding-left: 80%;
+    padding-left: 82%;
 }
+
+#favicon {
+    font-size:36px;
+    color: white;
+
+  }
