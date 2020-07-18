@@ -236,7 +236,10 @@ input[type="radio"]:checked + label {
 
 /* DETAILS PAGE */
       .details {
-        background-image: linear-gradient(rgba(85, 85, 85, 0.541), rgba(230, 230, 230, 0.596)),url(/foodBackground.jpg);
+        background-image: url(/choppingboard.png);
+        background-size: cover;
+        height: auto;
+        width: auto;
       }
 
       /* .purchaseCard {
