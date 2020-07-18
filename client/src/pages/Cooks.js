@@ -31,6 +31,7 @@ class Cooks extends Component {
     payBy: "",
     coordinates:[0,0],
     modalShow: false,
+
     
   };
  handleModalClose =() =>{
@@ -60,6 +61,12 @@ class Cooks extends Component {
   handleRadioChange = (event) => {
     this.setState({
       src: event.currentTarget.value
+    })
+  };
+
+  handlePortionsChange = (event) => {
+    this.setState({
+      portions: event.target.value
     })
   };
 
@@ -207,20 +214,19 @@ class Cooks extends Component {
                             </div>
 
                             <div className="form-group col-md-6">
-                            <label>Serving Size</label>
-                            <select className="form-control">
-                                <option selected disabled>Select Serving Size</option>
-                                <option>1 - 2 people</option>
-                                <option>2 - 4 people</option>
-                                <option>4 - 6 people</option>
-                                <option>6 - 8 people</option>
-                                <option>8+ people</option>
+                            <label>Serving Size: {this.state.portions}</label>
+                            <select className="form-control"
+                                    value={this.state.portions}
+                                    onChange={this.handlePortionsChange}
+                            >
+                                <option selected value= "null" >Select Serving Size</option>
+                                <option value="1-2 people">1 - 2 people</option>
+                                <option value="2-4 people">2 - 4 people</option>
+                                <option value="4-6 people">4 - 6 people</option>
+                                <option value="6-8 people">6 - 8 people</option>
+                                <option value="8+ people">8+ people</option>
                               </select>
                               <div
-                              value={this.state.portions}
-                              onChange={this.handleInputChange}
-                              name="portions"
-                              placeholder="How many Servings?"
                               />  
                             </div>
                           </div>
@@ -237,6 +243,7 @@ class Cooks extends Component {
                             </div>
 
                             <div className="form-group col-md-6">
+
                               <label>Payment Type</label>
                               <select className="form-control">
                                 <option selected disabled>Select Payment Type</option>

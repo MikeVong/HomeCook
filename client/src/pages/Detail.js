@@ -70,7 +70,7 @@ class Detail extends Component {
                       <span><button className="btn btn-info btn-lg"><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
                   <h4>Address:</h4> 
                   {this.state.cook.address}
-                  <h4>Protions Available: {this.state.cook.portions}</h4>
+                  <h4>Recommend for  {this.state.cook.portions}</h4>
                   <h4>Cost: ${this.state.cook.cost}</h4>
                   <h4>Payment Accepted: {this.state.cook.payBy}</h4>
                   <h4>Ingredients:</h4>
