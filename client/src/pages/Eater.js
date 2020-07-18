@@ -4,6 +4,7 @@ import useSwr from "swr";
 import { Link } from "react-router-dom";
 import "../App.css";
 import mapStyles from "../mapStyles";
+import Nav from "../components/Nav";
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 

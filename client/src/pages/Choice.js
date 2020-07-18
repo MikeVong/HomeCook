@@ -42,7 +42,7 @@ function Choice() {
                         <h1>Order Out</h1>
                         <p id="consumerInfo">Looking for something to eat, but no nearby restaurants are open? Click here to get started!</p>
                         <br></br>
-                        <a id="choicesbtn" className="m-2 display-4" href="/eater">Consumers</a>
+                        <a id="choicesbtn" className="m-2 display-4" href="/eater">Eat</a>
                     </div>
                 </div>    
 

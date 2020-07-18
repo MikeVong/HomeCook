@@ -11,6 +11,14 @@ function Nav() {
         Home-cooks
       </a>
 
+      <div  id="choices">
+        <a className="navbar-brand" href="/cooks">
+          Cook
+        </a>
+        <a className="navbar-brand" href="/eater">
+          Eat
+        </a>
+      </div>
       
         <ul className="list-group list-group-horizontal">
           <li className="list-group-item">

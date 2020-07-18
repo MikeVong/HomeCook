@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import Nav from "../components/Nav";
 
 
 const cart= localStorage.getItem("checkout") 
@@ -39,18 +40,24 @@ class Detail extends Component {
   render() {
     
     return (
+
     
-      <div className="" style={{backgroundImage:`url(/FoodBackground.jpg)`,width: "100vw", height: "100vh"}}>
+      <div className="details">
+        <Nav />
           <div className="row"style={{width: "100vw", height: "20vh"}}></div>
-            <div className="row"style={{width: "100vw", height: "60vh"}}>
-              <div className="col-md-2"></div>
-              <div className="col-md-8 seethough">
+          <div className="row"style={{width: "100vw", height: "60vh"}}>
+            <div className="col-md-2">
+            </div>
+
+              <div className="purchaseCard">
+                <div className="col-md-8 seethough">
                 <div className="row back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="col-md-6">
                     <img className="img-thumbnail rounded"src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100%"}}/>
                     <h4><button className="btn btn-warning">
                     <Link to="/eater">Back to Eater</Link>
                     </button></h4>
+                
                   </div>
                   <div className="col-md-6">
                   <h1>Dish Name: {this.state.cook.dish}</h1>
@@ -70,7 +77,11 @@ class Detail extends Component {
                   <p>{this.state.cook.ingredients}</p>
                   </div>
                 </div>
+               
               </div>
+
+            </div>
+
             <div className="col-md-2"></div>
             </div>
             

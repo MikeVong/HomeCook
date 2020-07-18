@@ -1,6 +1,7 @@
 import React,{useState, useEffect}from "react";
 import "../App.css";
 import API from "../utils/API";
+import Nav from "../components/Nav";
 import Modal from "react-modal";
 
 
@@ -39,6 +40,7 @@ useEffect(() => { JSON.parse(Storage) })
     return (
           
           <div className="jumbotron bg-info">
+          <Nav />
             <Modal
                 isOpen={modalShow}
                 style={{content: content}}
