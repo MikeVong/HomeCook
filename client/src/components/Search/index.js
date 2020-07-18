@@ -14,8 +14,8 @@ export default function Search(props) {
             <input 
             {...getInputProps({ 
               placeholder: "Type address" ,
-              className: 'location-search-input',
-              size: '137',
+              className: 'form-control'
+
               })} 
             />
 
