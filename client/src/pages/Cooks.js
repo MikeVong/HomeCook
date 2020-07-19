@@ -8,6 +8,8 @@ import Modal from "react-modal";
 // import Modal from 'react-bootstrap';
 
 const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
+const paymentOptions = ["Cash","PayPal","Facebook Messager","Sqaure Cash","Google Pay","Samsung Pay","Apple Pay","Cash App","Venmo","Zelle"]
+const serving =["1-2 people","2-4 people","4-6 people","6-8 people","8+ people"]
 
 
 const content = {top: '140px',left: '240px',right: '240px',bottom: '440px',
@@ -67,6 +69,12 @@ class Cooks extends Component {
   handlePortionsChange = (event) => {
     this.setState({
       portions: event.target.value
+    })
+  };
+
+  handlePaymentChange = (event) => {
+    this.setState({
+      payBy: event.target.value
     })
   };
 
@@ -214,17 +222,15 @@ class Cooks extends Component {
                             </div>
 
                             <div className="form-group col-md-6">
-                            <label>Serving Size: {this.state.portions}</label>
+                            <label>Serving Size</label>
                             <select className="form-control"
                                     value={this.state.portions}
                                     onChange={this.handlePortionsChange}
                             >
-                                <option selected value= "null" >Select Serving Size</option>
-                                <option value="1-2 people">1 - 2 people</option>
-                                <option value="2-4 people">2 - 4 people</option>
-                                <option value="4-6 people">4 - 6 people</option>
-                                <option value="6-8 people">6 - 8 people</option>
-                                <option value="8+ people">8+ people</option>
+                                <option selected value= "null">Select Serving Size</option>
+                                {serving.map((option, index)=>
+                                 <option key= {index} value={option}>{option}</option>
+                                )}
                               </select>
                               <div
                               />  
@@ -245,23 +251,18 @@ class Cooks extends Component {
                             <div className="form-group col-md-6">
 
                               <label>Payment Type</label>
-                              <select className="form-control">
-                                <option selected disabled>Select Payment Type</option>
-                                <option>Cash</option>
-                                <option>PayPal</option>
-                                <option>Facebook Messenger</option>
-                                <option>Square Cash</option>
-                                <option>Google Pay</option>
-                                <option>Samsung Pay</option>
-                                <option>Apple Pay</option>
-                                <option>Cash App</option>
-                                <option>Venmo</option>
-                                <option>Zelle</option>
+                              <select className="form-control"
+                                      value={this.state.payBy}
+                                      onChange={this.handlePaymentChange}
+                              >
+                                <option selected value= "null">Select Payment Type</option>
+                                {paymentOptions.map((option,index) => 
+                                  <option key= {index} value={option}>{option}</option>
+                                )}
+
                               </select>
                               <div
-                              value={this.state.payBy}
-                              onChange={this.handleInputChange}
-                              name="payBy"
+
                              />
                             </div>
                         </div>
