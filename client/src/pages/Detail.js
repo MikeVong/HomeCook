@@ -79,6 +79,7 @@ class Detail extends Component {
                   <h4>Recommend for  {this.state.cook.portions}</h4>
                   <h4>Cost: ${this.state.cook.cost}</h4>
                   <h4>Payment Accepted: {this.state.cook.payBy}</h4>
+                  <h4>Email: {this.state.cook.email}</h4>
                   <h4>Ingredients:</h4>
                   <p>{this.state.cook.ingredients}</p>
                   </div>

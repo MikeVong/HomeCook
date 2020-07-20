@@ -80,6 +80,10 @@ useEffect(() => { JSON.parse(Storage) })
                       <td>
                       <h4>{inCart.dish} by {inCart.name} at {inCart.address}</h4>
                       </td>
+                      <br></br>
+                      <td>
+                        <h5>Email: {inCart.email}</h5>
+                      </td>
                       <td>
                       <button className="btn btn-warning " onClick= {()=> removeFromCart(inCart)}>remove</button>
                       </td>
