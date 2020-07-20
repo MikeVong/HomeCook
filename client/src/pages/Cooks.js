@@ -7,12 +7,13 @@ import Nav from "../components/Nav";
 import Modal from "react-modal";
 // import Modal from 'react-bootstrap';
 
-const foodImage =["/steak.jpg","/dessert.jpg","/Pork.jpg","/veg.jpg","/chicken.jpg"];
-const paymentOptions = ["Cash","PayPal","Facebook Messager","Sqaure Cash","Google Pay","Samsung Pay","Apple Pay","Cash App","Venmo","Zelle"]
+const foodImage =[{ItemName: 'steak', ItemImg: './steak.jpg'}, {ItemName: 'dessert', ItemImg: '/dessert.jpg'},{ItemName: 'pork', ItemImg: '/Pork.jpg'},{ItemName: 'veggies', ItemImg: '/veg.jpg'},{ItemName: 'chicken', ItemImg: '/chicken.jpg'}];
+const paymentOptions = ["Cash","PayPal","Facebook Messanger","Sqaure Cash","Google Pay","Samsung Pay","Apple Pay","Cash App","Venmo","Zelle"]
 const serving =["1-2 people","2-4 people","4-6 people","6-8 people","8+ people"]
 
 
-const content = {top: '140px',left: '240px',right: '240px',bottom: '440px',
+
+const content = {top: '50%',left: '50%',right: 'auto',bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)',
                 border: '1px solid #ccc',background: '#fff',overflow: 'auto',
                 WebkitOverflowScrolling: 'touch',borderRadius: '4px',outline: 'none',padding: '20px'}
 Modal.setAppElement('#root')
@@ -26,6 +27,7 @@ class Cooks extends Component {
     address:"",
     dish:"",
     src:"",
+    alt:"",
     ingredients:"",
     portions:"",
     cost:"",
@@ -62,7 +64,8 @@ class Cooks extends Component {
 
   handleRadioChange = (event) => {
     this.setState({
-      src: event.currentTarget.value
+      src: event.currentTarget.value,
+      alt: event.currentTarget.id
     })
   };
 
@@ -108,50 +111,11 @@ class Cooks extends Component {
   <div className="choppingBoard" id="cooksCard">
   <Nav />
 
-  {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Thank you for posting your dish</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>An email will be sent to you once someone has placed the order for your dish.
-          Your customer will then come meet you at your chosen location in the next 45 minutes after purchase
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
- 
-
-  {/* <div className="modal" tabindex="-1" role="dialog"
-  isOpen={this.state.modalShow}>
-      <div className="modal-dialog" role="document">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Thank you for posting your dish</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-            <div>
-              <div className="modal-body">
-              <p>An Email will be sent to you once someone has placed the order for your dish.</p>
-              <p>Your customer will then come meet you at your chosen location in the next 45 minutes after purchase.</p>
-              </div>
-              <div className="modal-footer">
-              <button className="btn btn-success float-right"onClick={()=> this.handleModalClose() }>Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div> */}
-
     <Modal
       isOpen={this.state.modalShow}
       style={{content: content}}
     >
-    <h2 className="bg-info text-center">Thank you for posting your dish</h2>
+    <h2 className="text-center">Thank you for posting your dish</h2>
     <p>An Email will be sent to you once someone has placed the order for your dish.</p>
     <p>Your customer will then come meet you at your chosen location in the next 45 minutes after purchase.</p>
     <div>
@@ -268,18 +232,19 @@ class Cooks extends Component {
                         </div>
 
                           <fieldset>
-                            <legend>
-                              You picked {this.state.src} as your image.
-                            </legend>
+                          <legend>
+                              You have selected {this.state.alt} as your image.
+                          </legend>
                                 {foodImage.map((choice,index)=>
                                   <label key={index}>
                                     <Input type="radio"
                                     name="src"
-                                    value={choice}
+                                    id={choice.ItemName}
+                                    value={choice.ItemImg}
                                     checked={this.state.src === {choice}}
                                     onChange={this.handleRadioChange.bind(this)}
                                     />
-                                    <img id="pix"src={choice} alt={choice}/>
+                                    <img id="pix"src={choice.ItemImg} alt={choice.ItemName}/>
                                 </label>
                                 )}
                           </fieldset>
@@ -307,91 +272,6 @@ class Cooks extends Component {
     </div>
   </div>  
   
-      // <div className="choppingBoard">
-      //     <div className="container">
-      //           <div>
-      //             <h1 className="dishInfo">Please Enter In Your Dish Info:</h1>
-      //           </div>
-      //           <form>
-      //             <Input
-      //               value={this.state.name}
-      //               onChange={this.handleInputChange}
-      //               name="name"
-      //               placeholder="name (required)"
-      //             />
-      //             <Search 
-      //               value={this.state.address}
-      //               onChange={this.handleSelect}
-      //               onSelect={this.handleSelect}
-      //               name="address"
-      //               />
-                    
-      //             <Input
-      //               value={this.state.dish}
-      //               onChange={this.handleInputChange}
-      //               name="dish"
-      //               placeholder="dish name"
-      //             />
-
-      //             <fieldset>
-      //               <legend>
-      //                 You picked {this.state.src} as your image.
-      //               </legend>
-      //                   {foodImage.map((choice,index)=>
-      //                     <label>
-      //                       <Input type="radio"
-      //                       name="src"
-      //                       key={index}
-      //                       value={choice}
-      //                       checked={this.state.src === {choice}}
-      //                       onChange={this.handleRadioChange.bind(this)}
-      //                       />
-      //                       <img id="pix"src={choice} alt={choice}/>
-      //                   </label>
-      //                   )}
-      //             </fieldset>
-      //             <TextArea
-      //               value={this.state.ingredients}
-      //               onChange={this.handleInputChange}
-      //               name="ingredients"
-      //               placeholder="ingredients (Optional)"
-      //             />
-      //             <Input
-      //               value={this.state.portions}
-      //               onChange={this.handleInputChange}
-      //               name="portions"
-      //               placeholder="How many Servings?"
-      //             />
-      //             <Input
-      //               value={this.state.cost}
-      //               onChange={this.handleInputChange}
-      //               name="cost"
-      //               placeholder="Price?"
-      //             />
-      //             <Input
-      //               value={this.state.email}
-      //               onChange={this.handleInputChange}
-      //               name="email"
-      //               placeholder="email@email.com"
-      //               type="email"
-      //             />
-      //             <Input
-      //               value={this.state.payBy}
-      //               onChange={this.handleInputChange}
-      //               name="payBy"
-      //               placeholder="payment type"
-      //             />
-      //             <FormBtn
-      //               disabled={!(this.state.address && this.state.name)}
-      //               onClick={this.handleFormSubmit}
-      //             >
-      //               Submit Cook
-      //             </FormBtn>
-
-                  
-      //           </form>
-      //         </div>
-      // </div>
     );
   }
 }

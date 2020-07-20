@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import mapStyles from "../mapStyles";
 import Nav from "../components/Nav";
+// import { Button } from "react-bootstrap";
+// import { render } from "react-dom";
 
 const fetcher = (...arg)=> fetch(...arg).then(response => response.json());
 
@@ -34,11 +36,10 @@ function Map(){
     navigator.geolocation.getCurrentPosition(success);
 	},[])
 
-
+  
 
  return(
    <>
-
     <div className="row">
       <div className="" id="info">
             {cookLocation.map((card,index) =>(
@@ -52,23 +53,26 @@ function Map(){
                 setCurrentPosition(currentPosition);
               }}  
               >
-                  <div className="card-body">
+
+                  <div className="card-body" id="sidebar">
                       <div className="row">
                         <div className="col-xs-1">
-                        <img className="img-thumbnail" src={card.src} alt={card.name}/>
+                          <img className="img-thumbnail" src={card.src} alt={card.name}/>
                         </div>
                         <div className="col-xs-2">
                         <h5>{card.dish} by {card.name}</h5>
                         <h5>{card.address}</h5>
+                        {/* connect selected id to href */}
+                        {/* <a href={"/cooks/" + selectedCook}>Add to Cart</a>  */}
                         </div>
                       </div>
                     
                   </div>
-            
-              </div>
+                    
+                </div>
             ))}
       </div>
-      <div>
+    <div>)
           <GoogleMap
     zoom={12}
     center= {currentPosition}
@@ -107,8 +111,9 @@ function Map(){
                 }}
       >
         <div>
-              <h2>Dish: {selectedCook.dish}</h2>
-              <h3>Name: {selectedCook.name}</h3>
+              <h3>Dish: {selectedCook.dish}</h3>
+              <h5>Name: {selectedCook.name}</h5>
+              <h5>{selectedCook.address}</h5>
               <Link to={"/cooks/" + selectedCook._id}>
                       <button 
                       className="btn btn-danger"
@@ -126,6 +131,7 @@ function Map(){
     </>
  );
 }
+
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function Eater(){
@@ -133,10 +139,11 @@ export default function Eater(){
 
       <div style={{ width: "100vw", height: "90vh" }}>
         <Nav />
+
         <WrappedMap
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCFX4fMFqcH0z5pM2gMhvX6X9Yrk__7suE`}
-        loadingElement={<div style={{ height: `100%`}} />}
-        containerElement={<div style={{ height: `100%` }} />}
+        loadingElement={<div style={{ height: `105%`}} />}
+        containerElement={<div style={{ height: `105%` }} />}
         mapElement={<div style={{ height: `95%` }} />}
       />
       </div>
