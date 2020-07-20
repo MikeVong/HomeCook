@@ -1,14 +1,34 @@
 nav {
     background-color: rgba(43, 43, 43);
-    height: 80px;
+    /* height: 80px; */
+    z-index: 900;
 }
 
-#choices {
-    padding-left: 82%;
-}
+
 
 #favicon {
     font-size:36px;
     color: white;
 
+  }
+
+  /* change navbar-brand color */
+  .navbar a.navbar-brand {
+    color: white;
+  }
+  /* change navbar-brand color on hover */
+  .navbar a.navbar-brand:hover {
+    color: rgb(253, 92, 92);
+  }
+  /*  change navbar li colors, also active one but not disabled one */
+  .navbar ul.navbar-nav li.nav-item a.nav-link {
+    color: white;
+  }
+
+
+  /* change navbar background on collapse */
+  @media (max-width: 768px) {
+    nav.navbar {
+      background: rgba(43, 43, 43);
+    }
   }

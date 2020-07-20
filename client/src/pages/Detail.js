@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import Nav from "../components/Nav";
+import 'react-bootstrap';
 
 
 const cart= localStorage.getItem("checkout") 
@@ -44,30 +45,35 @@ class Detail extends Component {
     
       <div className="details">
         <Nav />
-          <div className="row"style={{width: "100vw", height: "20vh"}}></div>
-          <div className="row"style={{width: "100vw", height: "60vh"}}>
-            <div className="col-md-2">
-            </div>
+          {/* <div className="row"style={{width: "100vw", height: "20vh"}}></div>
+          <div className="row"style={{width: "100vw", height: "60vh"}}> */}
+            {/* <div className="col-md-2">
+            </div> */}
 
               <div className="purchaseCard">
-                <div className="col-md-8 seethough">
-                <div className="row back shadow-lg p-3 mb-5 bg-white rounded">
+                <div className="col-md-12"  id="detailCard">
+                <div className="row back shadow-lg">
                   <div className="col-md-6">
                     <img className="img-thumbnail rounded"src={this.state.cook.src} alt={this.state.cook.name} style={{width:"100%"}}/>
-                    <h4><button className="btn btn-warning">
-                    <Link to="/eater">Back to Eater</Link>
+                    <h4><button className="btn">
+                    <Link to="/eater" id="cartBtn2">Back to Eat</Link>
                     </button></h4>
                 
                   </div>
                   <div className="col-md-6">
                   <h1>Dish Name: {this.state.cook.dish}</h1>
-                  <h1>Cook by {this.state.cook.name}</h1>
-                  <h3><button className="btn btn-success btn-lg"
+                  <h1>Cooked by: {this.state.cook.name}</h1>
+                  <h3 id="detailBtns">
+                      <button className="btn btn-success btn-lg"
                               onClick= {()=> this.addToCart(this.state.cook)}
                               disabled= {disabled}>
                       Add to Cart
                       </button>
-                      <span><button className="btn btn-info btn-lg"><Link to="/checkout">Cart({cart.length})</Link></button></span></h3>
+                      &nbsp;
+                      <button className="btn btn-success btn-lg">
+                        <Link to="/checkout" id="cartBtn">Checkout({cart.length})</Link>
+                      </button>
+                  </h3>
                   <h4>Address:</h4> 
                   {this.state.cook.address}
                   <h4>Recommend for  {this.state.cook.portions}</h4>
@@ -87,7 +93,7 @@ class Detail extends Component {
             
 
             
-    </div>
+      // </div>
     );
   }
 }
