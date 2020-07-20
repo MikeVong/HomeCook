@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cookist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://homecooks:homecooks2020@ds259711.mlab.com:59711/heroku_qxbrwk2c");
 
 // Start the API server
 app.listen(PORT, function() {
