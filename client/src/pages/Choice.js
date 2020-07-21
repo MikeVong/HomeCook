@@ -69,10 +69,8 @@ function Choice() {
                 <div className="audio">
                     <ReactAudioPlayer
                         src="bensound-allthat.mp3"
-                        autoPlay
-                        loop
-                        volume= {0.03}
-                        // controls
+                        volume= {0.02}
+                        controls
                         />
                 </div>  
                 </div> 
