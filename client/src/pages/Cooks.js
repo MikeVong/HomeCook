@@ -5,7 +5,7 @@ import Search from "../components/Search";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import Nav from "../components/Nav";
 import Modal from "react-modal";
-// import Modal from 'react-bootstrap';
+
 
 const foodImage =[{ItemName: 'steak', ItemImg: './steak.jpg'}, {ItemName: 'dessert', ItemImg: '/dessert.jpg'},{ItemName: 'pork', ItemImg: '/Pork.jpg'},{ItemName: 'veggies', ItemImg: '/veg.jpg'},{ItemName: 'chicken', ItemImg: '/chicken.jpg'}];
 const paymentOptions = ["Cash","PayPal","Facebook Messanger","Sqaure Cash","Google Pay","Samsung Pay","Apple Pay","Cash App","Venmo","Zelle"]
@@ -18,8 +18,7 @@ const content = {top: '50%',left: '50%',right: 'auto',bottom: 'auto', marginRigh
                 WebkitOverflowScrolling: 'touch',borderRadius: '4px',outline: 'none',padding: '20px'}
 Modal.setAppElement('#root')
 
-// const handleClose = () => setShow(false);
-// const handleShow = () => setShow(true)
+
 class Cooks extends Component {
   state = {
     cooks: [],
@@ -142,9 +141,7 @@ class Cooks extends Component {
                           <div className="form-row">
                             <div className="form-group col-md-6">
                               <label>Name</label>
-
                               <Input
-
                                 value={this.state.name}
                                 onChange={this.handleInputChange}
                                 name="name"
@@ -212,9 +209,7 @@ class Cooks extends Component {
                               placeholder="ex/ 4.99"
                               />
                             </div>
-
                             <div className="form-group col-md-6">
-
                               <label>Payment Type</label>
                               <select className="form-control"
                                       value={this.state.payBy}
@@ -224,14 +219,11 @@ class Cooks extends Component {
                                 {paymentOptions.map((option,index) => 
                                   <option key= {index} value={option}>{option}</option>
                                 )}
-
                               </select>
                               <div
-
                              />
                             </div>
                         </div>
-
                           <fieldset>
                           <legend>
                               You have selected {this.state.alt} as your image.
