@@ -142,7 +142,7 @@ class Cooks extends Component {
                           <div className="form-row">
                             <div className="form-group cold-md-6">
                               <label>Name</label>
-                              <input className="form-control"
+                              <Input
                                 value={this.state.name}
                                 onChange={this.handleInputChange}
                                 name="name"
