@@ -1,5 +1,3 @@
-![](images/Home-cooks.gif)
-
 # group-project-3
 
 *NOTE: Because this app is hosted on Heroku, the mLabs add-on that accesses the mongoDB will be shutdown on November 10, 2020 and this app will no longer be functional.
@@ -15,7 +13,7 @@ And there you have it! A solution that will create new jobs and bring back the a
 APP OVERVIEW:
 1. 
 
-HOW TO USE bamazonCustomer.js:
+HOW TO USE:
 1. Once on the homepage, click on the get started button on the upper right hand corner and you will be brought down to the choices section. Select 'Cook' if you would like to post a dish you've made, or select 'Eat' if you are looking for a dish to buy. Users can scroll to the bottom of the page and play the audio that is on the page, if they choose.
 
 2. COOKS PAGE: Fill out the form and submit it once completed. A modal will pop up, letting the user know that their dish has been posted and they will be contacted via email once someone has purchased their dish. Once the user closes the modal, the user will be redirected to the homepage.
@@ -27,7 +25,7 @@ HOW TO USE bamazonCustomer.js:
 
 LIVE DEMO RECORDING:
 
-1. ![](.gif)
+1. ![](images/Home-cooks.gif)
 
 
 
