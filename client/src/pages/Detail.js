@@ -45,10 +45,6 @@ class Detail extends Component {
     
       <div className="details">
         <Nav />
-          {/* <div className="row"style={{width: "100vw", height: "20vh"}}></div>
-          <div className="row"style={{width: "100vw", height: "60vh"}}> */}
-            {/* <div className="col-md-2">
-            </div> */}
 
               <div className="purchaseCard">
                 <div className="col-md-12"  id="detailCard">
@@ -91,10 +87,7 @@ class Detail extends Component {
 
             <div className="col-md-2"></div>
             </div>
-            
 
-            
-      // </div>
     );
   }
 }

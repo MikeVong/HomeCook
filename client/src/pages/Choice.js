@@ -1,6 +1,5 @@
 import React from "react";
 import "../App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import LottieFood from '../components/lottieJS/LottieFood';
 import LottiePan from '../components/lottieJS/LottiePan';
 import ReactAudioPlayer from 'react-audio-player';
@@ -11,23 +10,10 @@ function Choice() {
     <>
     <div id="choicePage">
 
-
         <div className="jumbotron text-center" id="jumbo">
         <Link to="cookCard" id="start" smooth={true} duration={1200}>Get Started</Link>
-        
-        
-        {/* <div className="navbar navbar-expand-lg" id="choiceNav">
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active" id="navStart">
-                        <a className="nav-link" href="#cookCard" id="start">Get Started</a>
-                    </li>
-                </ul>
-            </div>
-        </div> */}
 
             <h1 className="nameCo">Home-cooks</h1>
-            {/* <p>A community place to sell and buy meals</p> */}
         </div>
 
 
@@ -47,10 +33,6 @@ function Choice() {
                     <LottiePan></LottiePan>
                 </div>
             </div>
-
-
-
-                {/* <div className="col lg-6"></div> */}
 
             <div className="row" id="cRow">
                 <div className="col md-6">
@@ -72,7 +54,6 @@ function Choice() {
                         autoPlay
                         loop
                         volume= {0.03}
-                        // controls
                         />
                 </div>  
                 </div> 
