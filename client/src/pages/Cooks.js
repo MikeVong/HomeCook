@@ -176,7 +176,6 @@ class Cooks extends Component {
                           placeholder="dish name"
                         />
                     </div>
-
                     <div className="form-group col-md-6">
                       <label>Serving Size</label>
                         <select className="form-control"
@@ -190,7 +189,68 @@ class Cooks extends Component {
                     <div/>  
                     </div>
                   </div>
+        <div className="col md-12">
+        <form>
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label>Name</label>
+                              <Input
+                                value={this.state.name}
+                                onChange={this.handleInputChange}
+                                name="name"
+                                placeholder="Name (required)"
+                              />
+                            </div>
 
+                            <div className="form-group col-md-6">
+                            <label>Email Address</label>
+                              <Input
+                              value={this.state.email}
+                              onChange={this.handleInputChange}
+                              name="email"
+                              placeholder="email@email.com"
+                              type="email"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="form-row">
+                          <div className="form-group col-md-6">
+                              <label>Address</label>
+                                <Search
+                                value={this.state.address}
+                                onChange={this.handleSearchChange}
+                                onSelect={this.handleSelect}
+                                />
+                            </div>
+                          </div>
+
+                          <div className="form-row" id="dish">
+                            <div className="form-group col-md-6">
+                            <label>Dish Name</label>
+                              <Input
+                              value={this.state.dish}
+                              onChange={this.handleInputChange}
+                              name="dish"
+                              placeholder="dish name"
+                              />
+                            </div>
+
+                            <div className="form-group col-md-6">
+                            <label>Serving Size</label>
+                            <select className="form-control"
+                                    value={this.state.portions}
+                                    onChange={this.handlePortionsChange}
+                            >
+                                <option selected value= "null">Select Serving Size</option>
+                                {serving.map((option, index)=>
+                                 <option key= {index} value={option}>{option}</option>
+                                )}
+                              </select>
+                              <div
+                              />  
+                            </div>
+                          </div>
                         <div className="form-row">
                         <div className="form-group col-md-6">
                             <label>Price</label>
@@ -212,6 +272,11 @@ class Cooks extends Component {
                                   )}
                               </select>
                               <div/>
+                                {paymentOptions.map((option,index) => 
+                                  <option key= {index} value={option}>{option}</option>
+                                )}
+                              </select>
+                              <div />
                             </div>
                         </div>
                           <fieldset>
