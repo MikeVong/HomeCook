@@ -7,6 +7,7 @@ import Modal from "react-modal";
 
 
 Modal.setAppElement('#root')
+
 function Checkout() {
 const Storage= localStorage.getItem("checkout");
 const [cart, setCart] = useState(Storage ? JSON.parse(Storage): [])
@@ -18,42 +19,35 @@ const content = {top: '50%',left: '50%',right: 'auto',bottom: 'auto', marginRigh
 
 useEffect(() => { JSON.parse(Storage) })
 
- const removeFromCart =(remove)=> {
+const removeFromCart =(remove)=> {
             setCart(cart.filter((item) => item !== remove));
             localStorage.setItem("checkout", JSON.stringify(cart.filter((item) => item !== remove)));
-        };
+  };
 
 
-  const ModalClose =() =>{
+const ModalClose =() =>{
     setModalShow(false);
     window.location.reload()
-
   }
 
-  const deleteCook = id => {
+const deleteCook = id => {
     API.deleteCook(id)
       .then(setModalShow(true))
       .then(localStorage.clear())
-      // .then(window.location.reload())
       .catch(err => console.log(err));
-    
-
   };
     
-    return (
-          
+  return (
           <div className="checkout">
           <Nav />
             <Modal
                 isOpen={modalShow}
-                style={{overylay: overlay, content: content}}
-            >
+                style={{overylay: overlay, content: content}}>
               <h2 className="text-center">Thank you for the purchase!</h2>
               <p>An Email was sent to the Cook. Please allow 45 mins before going to pick up the food.</p>
               <div>
               <button className="btn btn-success float-right"onClick={()=> ModalClose()}>Close</button>
               </div>
-              
             </Modal>
            {console.log(cart)}
            <div className="card">
@@ -94,13 +88,10 @@ useEffect(() => { JSON.parse(Storage) })
                 ))}
               </tbody>
             </table>
-
 </div>
 <div className="bottom"></div>
                 <br></br>
            </div>
-
-
     );
 }
 

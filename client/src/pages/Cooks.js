@@ -6,18 +6,16 @@ import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import Nav from "../components/Nav";
 import Modal from "react-modal";
 
-
 const foodImage =[{ItemName: 'steak', ItemImg: './steak.jpg'}, {ItemName: 'dessert', ItemImg: '/dessert.jpg'},{ItemName: 'pork', ItemImg: '/Pork.jpg'},{ItemName: 'veggies', ItemImg: '/veg.jpg'},{ItemName: 'chicken', ItemImg: '/chicken.jpg'}];
 const paymentOptions = ["Cash","PayPal","Facebook Messanger","Sqaure Cash","Google Pay","Samsung Pay","Apple Pay","Cash App","Venmo","Zelle"]
 const serving =["1-2 people","2-4 people","4-6 people","6-8 people","8+ people"]
 
 
-
 const content = {top: '50%',left: '50%',right: 'auto',bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)',
                 border: '1px solid #ccc',background: '#fff',overflow: 'auto',
                 WebkitOverflowScrolling: 'touch',borderRadius: '4px',outline: 'none',padding: '20px'}
+                
 Modal.setAppElement('#root')
-
 
 class Cooks extends Component {
   state = {
@@ -96,7 +94,6 @@ class Cooks extends Component {
         payBy: this.state.payBy,
         coordinates: this.state.coordinates
       })
-        // .then(this.props.history.push('/')) 
         .catch(err => console.log(err));
 
 
@@ -136,6 +133,62 @@ class Cooks extends Component {
       </div>
 
       <div className="row" id="Row">
+          <div className="col md-12">
+            <form>
+                <div className="form-row">
+                    <div className="form-group cold-md-6">
+                      <label>Name</label>
+                      <Input
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                        name="name"
+                        placeholder="Name (required)"
+                      />
+                    </div>
+                    <div className="form-group col-md-6">
+                      <label>Email Address</label>
+                      <Input
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        name="email"
+                        placeholder="email@email.com"
+                        type="email"
+                      />
+                    </div>
+                </div>
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                      <label>Address</label>
+                        <Search
+                          value={this.state.address}
+                          onChange={this.handleSearchChange}
+                          onSelect={this.handleSelect}
+                        />
+                  </div>
+                </div>
+                <div className="form-row" id="dish">
+                    <div className="form-group col-md-6">
+                      <label>Dish Name</label>
+                        <Input
+                          value={this.state.dish}
+                          onChange={this.handleInputChange}
+                          name="dish"
+                          placeholder="dish name"
+                        />
+                    </div>
+                    <div className="form-group col-md-6">
+                      <label>Serving Size</label>
+                        <select className="form-control"
+                                value={this.state.portions}
+                                onChange={this.handlePortionsChange}>
+                            <option selected value= "null">Select Serving Size</option>
+                              {serving.map((option, index)=>
+                                <option key= {index} value={option}>{option}</option>
+                              )}
+                        </select>
+                    <div/>  
+                    </div>
+                  </div>
         <div className="col md-12">
         <form>
                           <div className="form-row">
@@ -198,7 +251,6 @@ class Cooks extends Component {
                               />  
                             </div>
                           </div>
-
                         <div className="form-row">
                         <div className="form-group col-md-6">
                             <label>Price</label>
@@ -213,21 +265,24 @@ class Cooks extends Component {
                               <label>Payment Type</label>
                               <select className="form-control"
                                       value={this.state.payBy}
-                                      onChange={this.handlePaymentChange}
-                              >
+                                      onChange={this.handlePaymentChange}>
                                 <option selected value= "null">Select Payment Type</option>
+                                  {paymentOptions.map((option,index) => 
+                                    <option key= {index} value={option}>{option}</option>
+                                  )}
+                              </select>
+                              <div/>
                                 {paymentOptions.map((option,index) => 
                                   <option key= {index} value={option}>{option}</option>
                                 )}
                               </select>
-                              <div
-                             />
+                              <div />
                             </div>
                         </div>
                           <fieldset>
-                          <legend>
-                              You have selected {this.state.alt} as your image.
-                          </legend>
+                            <legend>
+                                You have selected {this.state.alt} as your image.
+                            </legend>
                                 {foodImage.map((choice,index)=>
                                   <label key={index}>
                                     <Input type="radio"
@@ -241,7 +296,6 @@ class Cooks extends Component {
                                 </label>
                                 )}
                           </fieldset>
-
                           <div className="form-row" id="ingredients">
                             <div className="form-group col-md-6">
                               <TextArea
@@ -252,11 +306,9 @@ class Cooks extends Component {
                               />
                             </div>
                           </div>
-                        
                           <FormBtn
                             disabled={!(this.state.address && this.state.name)}
-                            onClick={this.handleFormSubmit}
-                          >
+                            onClick={this.handleFormSubmit}>
                             Submit Cook
                           </FormBtn>         
         </form>

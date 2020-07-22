@@ -62,8 +62,6 @@ function Map(){
                         <div className="col-xs-2">
                         <h5>{card.dish} by {card.name}</h5>
                         <h5>{card.address}</h5>
-                        {/* connect selected id to href */}
-                        {/* <a href={"/cooks/" + selectedCook}>Add to Cart</a>  */}
                         </div>
                       </div>
                     
