@@ -3,7 +3,7 @@
 *NOTE: Because this app is hosted on Heroku, the mLabs add-on that accesses the mongoDB will be shutdown on November 10, 2020 and this app will no longer be functional.
 
 ABOUT:
-* With Covid-19 closing down a lot of restaurants and jobs in the U.S., people have lost their source of income and those who dine out often have been left with having to make their own meals. 
+With Covid-19 closing down a lot of restaurants and jobs in the U.S., people have lost their source of income and those who dine out often have been left with having to make their own meals. 
 
 Here at Home-cooks, we have created a solution to feed the masses while starting up temporary jobs for anyone that knows how to cook. Introducing the Home-Cooks website: where chefs can post dishes of their creations for anyone to purchase. Just open up the webpage, select whether you are a cook or an eater. 
 If you’ve selected Cooks, you will be asked to enter in the dish information, time and date when it will be ready, where to meet, and the payment type of your preference. If you’ve selected Eaters, you will be taken to the Google Maps page that displays all of the dishes in your area (with the information the cooks have provided), and you can select the amount of portions that you would like. 
