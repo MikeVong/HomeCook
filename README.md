@@ -1,4 +1,4 @@
-# group-project-3
+###HomeCook
 
 *NOTE: Because this app is hosted on Heroku, the mLabs add-on that accesses the mongoDB will be shutdown on November 10, 2020 and this app will no longer be functional.
 
